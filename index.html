@@ -6,171 +6,240 @@
 <title>日月潭浪漫小旅行</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap">
 <style>
-/* 日系繪本風：和紙白底、3px 墨灰粗框、大圓角、平塗配色。 */
+/* 日式手繪手帳風：米色和紙、咖啡色鉛筆線、紙膠帶標題、水彩般的暖色。 */
 :root{
-  --paper:#FFFCF6; --ink:#3E3A39; --ink-soft:#6A625F; --white:#FFFFFF;
-  --coral:#F2A497; --yellow:#F6D27A; --blue:#A8D3E6; --green:#B9DAA5;
-  --line:3px solid var(--ink);
-  --r-lg:28px; --r-md:20px; --r-sm:14px;
-  --font:"Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --nav-h:56px;
+  --paper:#F6EFE2; --cream:#FFFAF1; --ink:#4A3B2F; --ink-soft:#76604F;
+  --line:#C4A98B; --line-soft:rgba(196,169,139,.5);
+  --accent:#A85E44; --accent-ink:#FFF8EE;
+  --terra:#C7785C; --mustard:#D8A657; --sage:#8DA585; --sky:#9DBACB; --rose:#E3A99A;
+  --t-drive:#F2D6C8; --t-walk:#DDE6D3; --t-must:#F4E0B5; --t-time:#E2EBEF;
+  --tape-1:rgba(216,166,87,.38); --tape-2:rgba(227,169,154,.42); --tape-3:rgba(141,165,133,.38); --tape-4:rgba(157,186,203,.45);
+  --r:18px 22px 16px 24px / 22px 16px 24px 18px;
+  --font:"LXGW WenKai TC","Noto Serif TC","PingFang TC","Microsoft JhengHei",serif;
+  --nav-h:58px;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.7 var(--font);
+body{margin:0;color:var(--ink);font:400 17px/1.75 var(--font);
+  background-color:var(--paper);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .22 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px));
-  padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+  padding-bottom:calc(44px + env(safe-area-inset-bottom,0px))}
+body.editing{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
 a{color:inherit}
-button,input{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:10px}
-.wrap{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:28px;
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:10px}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+.wrap{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:30px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 section{scroll-margin-top:calc(var(--nav-h) + env(safe-area-inset-top,0px) + 14px)}
 
-/* top nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--paper);border-bottom:var(--line);
-  padding-top:env(safe-area-inset-top,0px)}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(246,239,226,.97);border-bottom:1.5px dashed var(--line);padding-top:env(safe-area-inset-top,0px)}
 .nav-in{max-width:600px;margin:0 auto;height:var(--nav-h);display:flex;align-items:center;gap:10px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.brand{display:flex;align-items:center;gap:8px;font-size:17px;white-space:nowrap;text-decoration:none}
+.brand{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700;white-space:nowrap;text-decoration:none}
 .brand svg{width:30px;height:30px;flex:none}
-.menu{margin-left:auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.menu{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .menu::-webkit-scrollbar{display:none}
-.menu a{flex:none;text-decoration:none;font-size:14px;line-height:1;padding:8px 12px;border:var(--line);border-radius:999px;background:var(--white)}
-.menu a:nth-child(1){background:var(--yellow)}
-.menu a:nth-child(2){background:var(--coral)}
-.menu a:nth-child(3){background:var(--green)}
-.menu a:nth-child(4){background:var(--blue)}
+.menu a{flex:none;text-decoration:none;font-size:15px;line-height:1;padding:9px 10px;border-radius:3px}
+.menu a:nth-child(1){background:var(--tape-1);transform:rotate(-1.5deg)}
+.menu a:nth-child(2){background:var(--tape-2);transform:rotate(1deg)}
+.menu a:nth-child(3){background:var(--tape-3);transform:rotate(-1deg)}
+.menu a:nth-child(4){background:var(--tape-4);transform:rotate(1.5deg)}
 @media (max-width:400px){.brand span{display:none}}
 
-/* shared cards */
-.card{background:var(--white);border:var(--line);border-radius:var(--r-lg);box-shadow:0 5px 0 var(--ink);padding:18px}
-.h2{margin:0 0 14px;font-size:22px;line-height:1.4;font-weight:400;display:flex;align-items:center;gap:10px}
-.h2 .dot{width:18px;height:18px;border:var(--line);border-radius:50%;flex:none}
+/* shared */
+.card{position:relative;background:var(--cream);border:1.5px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:0 12px 26px -16px rgba(110,80,50,.4)}
+.card::after{content:"";position:absolute;inset:4px -3px -3px 4px;border:1px solid var(--line-soft);border-radius:var(--r);pointer-events:none}
+.h2{margin:0 0 14px;font-size:24px;line-height:1.4;font-weight:700}
+.tape{display:inline-block;padding:0 16px;border-radius:2px;background:var(--tape-1);transform:rotate(-1.2deg)}
+.tape.t2{background:var(--tape-2);transform:rotate(1deg)}
+.tape.t3{background:var(--tape-3);transform:rotate(-.8deg)}
+.tape.t4{background:var(--tape-4);transform:rotate(1.2deg)}
+.btn{min-height:44px;padding:6px 18px;background:var(--cream);border:1.5px solid var(--line);border-radius:999px;cursor:pointer;line-height:1.3;color:var(--ink)}
+.btn:hover{background:#FFF3E0}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:#95503A}
+.btn.warn{background:var(--t-drive);border-color:var(--terra)}
+.btn.sm{min-height:40px;padding:2px 14px;font-size:15px}
+.btn[disabled]{opacity:.45;cursor:default;transform:none}
 
 /* hero */
-.hero{background:var(--paper);border:var(--line);border-radius:var(--r-lg);box-shadow:0 5px 0 var(--ink);overflow:hidden;margin-top:18px}
-.hero svg{display:block;width:100%;height:auto}
-.hero-text{padding:6px 20px 22px;text-align:center}
-.eyebrow{display:inline-block;margin:0 0 8px;padding:2px 14px;border:var(--line);border-radius:999px;background:var(--yellow);font-size:14px}
-.title{margin:0;font-size:clamp(28px,8.5vw,38px);line-height:1.3;font-weight:400}
-.route{margin:6px 0 0;color:var(--ink-soft);font-size:16px}
-.count{margin-top:16px;border:var(--line);border-radius:var(--r-md);background:var(--blue);padding:14px 12px 12px}
-.count .lab{margin:0 0 8px;font-size:15px}
+.hero{padding:0;overflow:hidden;margin-top:18px}
+.scene{position:relative;aspect-ratio:360/260;border-bottom:1.5px dashed var(--line)}
+.scene svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-text{padding:12px 20px 22px;text-align:center}
+.eyebrow{display:inline-block;margin:0 0 6px;padding:0 14px;background:var(--tape-2);border-radius:2px;transform:rotate(-1.5deg);font-size:15px}
+.title{margin:0;font-size:clamp(30px,9vw,40px);line-height:1.3;font-weight:700;letter-spacing:.04em;overflow-wrap:anywhere}
+.route{margin:4px 0 0;color:var(--ink-soft);font-size:17px;overflow-wrap:anywhere}
+.count{margin-top:16px;border:1.5px dashed var(--line);border-radius:var(--r);background:var(--t-time);padding:14px 12px 12px}
+.count .lab{margin:0 0 8px;font-size:16px}
 .cd-boxes{display:flex;justify-content:center;gap:10px}
-.cd-box{min-width:68px;padding:6px 8px 4px;background:var(--white);border:var(--line);border-radius:var(--r-sm)}
-.cd-num{display:block;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
-.cd-unit{display:block;font-size:13px;color:var(--ink-soft)}
+.cd-box{min-width:70px;padding:4px 8px 4px;background:var(--cream);border:1.5px solid var(--line);border-top:7px solid var(--terra);border-radius:4px 4px 8px 8px;box-shadow:0 3px 0 rgba(120,90,60,.12)}
+.cd-num{display:block;font-size:32px;line-height:1.15;font-weight:700;font-variant-numeric:tabular-nums}
+.cd-unit{display:block;font-size:14px;color:var(--ink-soft)}
 .count .big{margin:0;font-size:22px}
 .datewrap{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
-.datewrap label{font-size:14px}
-.date{min-height:44px;padding:6px 12px;background:var(--white);border:var(--line);border-radius:var(--r-sm)}
-.btn{min-height:44px;padding:6px 18px;background:var(--yellow);border:var(--line);border-radius:999px;cursor:pointer;box-shadow:0 3px 0 var(--ink)}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.datewrap label{font-size:15px}
+.in{width:100%;min-height:44px;padding:6px 12px;background:#FFFDF8;border:1.5px solid var(--line);border-radius:12px 14px 11px 15px;font-size:16px}
+.date{width:auto}
 
 /* ticket */
-.ticket{position:relative;background:var(--yellow);border:var(--line);border-radius:var(--r-lg);box-shadow:0 5px 0 var(--ink);padding:0;overflow:hidden}
-.ticket-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:3px dashed var(--ink)}
-.ticket-top b{font-weight:400;font-size:15px}
-.stamp{padding:1px 12px;border:var(--line);border-radius:999px;background:var(--white);font-size:13px}
-.legs{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:16px 18px 8px;text-align:center}
-.legs .city{margin:0;font-size:26px;line-height:1.2}
-.legs .sub{margin:0;font-size:13px;color:var(--ink);opacity:.8}
+.ticket{background:#F8E9CB;padding:0;overflow:hidden}
+.ticket-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:2px dashed var(--line)}
+.ticket-top b{font-size:17px;overflow-wrap:anywhere}
+.stamp{padding:0 12px;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;font-size:14px;white-space:nowrap;transform:rotate(-4deg)}
+.legs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;padding:16px 18px 8px;text-align:center}
+.legs .city{margin:0;font-size:28px;line-height:1.2;font-weight:700;overflow-wrap:anywhere}
+.legs .sub{margin:0;font-size:14px;color:var(--ink-soft);overflow-wrap:anywhere}
 .legs svg{width:64px;height:40px}
 .ticket-bot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px 18px 16px}
-.ticket-bot div{background:var(--paper);border:var(--line);border-radius:var(--r-sm);padding:6px 8px;text-align:center}
-.ticket-bot small{display:block;font-size:12px;color:var(--ink-soft)}
-.ticket-bot span{font-size:15px}
-.ticket-bot b{font-weight:400}
-.ticket-link{display:block;margin:0 18px 18px;padding:10px;text-align:center;background:var(--white);border:var(--line);border-radius:999px;text-decoration:none}
-.notch{position:absolute;top:50%;width:22px;height:22px;background:var(--paper);border:var(--line);border-radius:50%}
+.ticket-bot div{background:var(--cream);border:1.5px solid var(--line);border-radius:10px 12px 9px 13px;padding:6px 8px;text-align:center;min-width:0}
+.ticket-bot small{display:block;font-size:13px;color:var(--ink-soft);overflow-wrap:anywhere}
+.ticket-bot span{font-size:16px;overflow-wrap:anywhere}
+.ticket-link{display:block;margin:0 18px 18px;padding:10px;text-align:center;background:var(--cream);border:1.5px solid var(--line);border-radius:999px;text-decoration:none}
+.ticket-link:hover{background:#FFF3E0}
 
-/* tabs */
+/* plan */
+.plan-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.plan-head .h2{margin:0}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.tab{min-height:46px;padding:6px 18px;border:var(--line);border-radius:999px;background:var(--white);cursor:pointer;text-align:center;line-height:1.2}
-.tab small{display:block;font-size:12px;color:var(--ink-soft)}
-.tab[aria-selected="true"]{background:var(--coral);box-shadow:0 4px 0 var(--ink)}
+.tab{min-height:46px;padding:6px 18px;border:1.5px solid var(--line);border-radius:999px;background:var(--cream);cursor:pointer;text-align:center;line-height:1.2}
+.tab small{display:block;font-size:13px;color:var(--ink-soft)}
+.tab[aria-selected="true"]{background:var(--t-drive);border-color:var(--terra)}
 .tab[aria-selected="true"] small{color:var(--ink)}
-.day-note{margin:0 0 14px;color:var(--ink-soft);font-size:15px}
-
-/* timeline */
+.day-note{margin:0 0 16px;color:var(--ink-soft);font-size:16px;overflow-wrap:anywhere}
 .tl{list-style:none;margin:0;padding:0;position:relative}
-.tl::before{content:"";position:absolute;left:14px;top:12px;bottom:12px;border-left:3px dashed var(--ink)}
-.stop{position:relative;padding-left:44px;margin-bottom:16px}
+.tl::before{content:"";position:absolute;left:13px;top:14px;bottom:14px;border-left:2px dashed var(--line)}
+.stop{position:relative;padding-left:40px;margin-bottom:18px}
 .stop:last-child{margin-bottom:0}
-.pin{position:absolute;left:3px;top:14px;width:24px;height:24px;border:var(--line);border-radius:50%;background:var(--white)}
-.stop.must .pin{background:var(--yellow)}
-.stop-card{background:var(--paper);border:var(--line);border-radius:var(--r-md);padding:12px 14px 12px}
-.stop.must .stop-card{background:var(--white);box-shadow:0 4px 0 var(--ink)}
-.time{display:inline-block;margin:0 0 4px;padding:0 12px;background:var(--blue);border:var(--line);border-radius:999px;font-size:14px;font-variant-numeric:tabular-nums}
-.stop h3{margin:0;font-size:18px;line-height:1.45;font-weight:400;overflow-wrap:anywhere}
-.addr{margin:2px 0 0;font-size:14px;color:var(--ink-soft);overflow-wrap:anywhere}
-.note{margin:2px 0 0;font-size:14px}
+.pin{position:absolute;left:4px;top:16px;width:20px;height:20px;border:2px solid var(--ink-soft);border-radius:50% 45% 52% 48%;background:var(--cream)}
+.stop.must .pin{background:var(--mustard);border-color:var(--accent)}
+.stop-card{background:#FFFDF8;border:1.5px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.stop.must .stop-card{background:#FFF6E3;border-color:#D8B47A}
+.time{display:inline-block;margin:0 0 4px;padding:0 10px;background:var(--t-time);border-radius:3px;font-size:15px;font-variant-numeric:tabular-nums}
+.stop h3{margin:0;font-size:19px;line-height:1.45;font-weight:700;overflow-wrap:anywhere}
+.addr{margin:2px 0 0;font-size:15px;color:var(--ink-soft);overflow-wrap:anywhere}
+.note{margin:2px 0 0;font-size:15px;overflow-wrap:anywhere}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.tag{display:inline-block;padding:0 12px;border:var(--line);border-radius:999px;font-size:13px;line-height:1.7}
-.tag.drive{background:var(--coral)}
-.tag.walk{background:var(--green)}
-.tag.bus{background:var(--blue)}
-.tag.must{background:var(--yellow)}
-.maplink{display:inline-flex;align-items:center;gap:6px;margin-top:10px;min-height:40px;padding:4px 14px;border:var(--line);border-radius:999px;background:var(--white);text-decoration:none;font-size:14px}
+.tag{display:inline-block;padding:0 10px;border-radius:3px;font-size:14px;line-height:1.75}
+.tag.drive{background:var(--t-drive)}
+.tag.walk{background:var(--t-walk)}
+.tag.must{background:var(--t-must);color:#7A4A1E}
+.illus{margin:12px 0 0;aspect-ratio:16/10;border:1.5px solid var(--line);border-radius:12px 14px 11px 15px;overflow:hidden;background:var(--paper)}
+.illus svg{display:block;width:100%;height:100%}
+.maplink{display:inline-flex;align-items:center;gap:6px;margin-top:10px;min-height:40px;padding:4px 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--cream);text-decoration:none;font-size:15px}
+.maplink:hover{background:#FFF3E0}
 .maplink svg{width:16px;height:16px;flex:none}
-.legend{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0;font-size:13px;color:var(--ink-soft);align-items:center}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0;font-size:14px;color:var(--ink-soft);align-items:center}
+.empty{margin:0;padding:16px;text-align:center;color:var(--ink-soft);border:1.5px dashed var(--line);border-radius:var(--r)}
+
+/* share */
+.share{margin-top:16px;background:#EEF3F1}
+.share p{margin:0 0 10px;font-size:16px}
+.share .row{display:flex;flex-wrap:wrap;gap:8px}
+.share .msg{margin:10px 0 0;font-size:15px}
+.share .in{margin-top:10px}
+.banner{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px;padding:12px 14px;background:var(--t-must);border:1.5px dashed var(--mustard);border-radius:var(--r);font-size:15px}
+.banner p{margin:0;flex:1 1 180px}
+
+/* editor */
+.fld{display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.fld label{font-size:14px;color:var(--ink-soft)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair .fld{min-width:0}
+@media (max-width:380px){.pair{grid-template-columns:1fr}}
+.ecard{border:1.5px dashed var(--line);border-radius:var(--r);background:#FFFDF8;padding:12px;margin-bottom:14px}
+.ecard.must{background:#FFF6E3}
+.ecard h4{margin:0 0 10px;font-size:17px;font-weight:700}
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.ck{position:relative;display:inline-block}
+.ck input{position:absolute;opacity:0;width:1px;height:1px}
+.ck span{display:inline-block;min-height:40px;padding:4px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--cream);cursor:pointer;line-height:1.9}
+.ck input:checked + span.c-drive{background:var(--t-drive);border-color:var(--terra)}
+.ck input:checked + span.c-walk{background:var(--t-walk);border-color:var(--sage)}
+.ck input:checked + span.c-must{background:var(--t-must);border-color:var(--mustard)}
+.ck input:focus-visible + span{outline:2.5px solid var(--accent);outline-offset:3px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;padding-top:10px;border-top:1.5px dotted var(--line)}
+.dayctl{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.ebar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(246,239,226,.98);border-top:1.5px dashed var(--line);
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.ebar-in{max-width:600px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ebar .msg{flex:1 1 140px;margin:0;font-size:15px;color:var(--ink-soft)}
 
 /* todo */
-.progress{height:18px;border:var(--line);border-radius:999px;background:var(--paper);overflow:hidden;margin:0 0 6px}
-.progress i{display:block;height:100%;width:0;background:var(--green);border-right:3px solid var(--ink);transition:width .35s cubic-bezier(.34,1.56,.64,1)}
-.progress-t{margin:0 0 12px;font-size:14px;color:var(--ink-soft)}
-.todo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.todo li{display:flex;align-items:center;gap:6px;border:var(--line);border-radius:var(--r-md);background:var(--paper);padding:2px 6px 2px 2px}
-.todo label{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:8px 8px;cursor:pointer;overflow-wrap:anywhere}
+.progress{height:14px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);overflow:hidden;margin:0 0 6px}
+.progress i{display:block;height:100%;width:0;background:var(--sage);transition:width .35s cubic-bezier(.34,1.56,.64,1)}
+.progress-t{margin:0 0 12px;font-size:15px;color:var(--ink-soft)}
+.todo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.todo li{display:flex;align-items:center;gap:6px;border-bottom:1.5px dashed var(--line-soft);padding:2px 4px 2px 0}
+.todo label{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:8px 4px;cursor:pointer;overflow-wrap:anywhere}
 .todo input{position:absolute;opacity:0;width:1px;height:1px}
-.box{flex:none;width:28px;height:28px;border:var(--line);border-radius:9px;background:var(--white);display:grid;place-items:center}
-.box svg{width:18px;height:18px;opacity:0;stroke:var(--ink);stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.todo input:checked + .box{background:var(--green)}
-.todo input:checked + .box svg{opacity:1}
-.todo input:checked ~ .tx{text-decoration:line-through;color:var(--ink-soft)}
-.todo input:focus-visible + .box{outline:3px solid var(--ink);outline-offset:3px}
-.del{flex:none;width:40px;height:40px;border:0;background:transparent;border-radius:50%;cursor:pointer;font-size:22px;line-height:1}
+.cbox{flex:none;width:26px;height:26px;border:1.8px solid var(--ink-soft);border-radius:6px 8px 5px 9px;background:#FFFDF8;display:grid;place-items:center}
+.cbox svg{width:20px;height:20px;opacity:0;stroke:var(--accent);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.todo input:checked + .cbox svg{opacity:1}
+.todo input:checked ~ .tx{text-decoration:line-through;text-decoration-color:var(--terra);color:var(--ink-soft)}
+.todo input:focus-visible + .cbox{outline:2.5px solid var(--accent);outline-offset:3px}
+.del{flex:none;width:40px;height:40px;border:0;background:transparent;border-radius:50%;cursor:pointer;font-size:22px;line-height:1;color:var(--ink-soft)}
 .add{display:flex;gap:8px;margin-top:14px}
-.add input{flex:1;min-width:0;min-height:46px;padding:6px 14px;border:var(--line);border-radius:999px;background:var(--white)}
+.add .in{flex:1;min-width:0;border-radius:999px;padding:6px 14px}
 
 /* stay */
-.stay{background:var(--green)}
-.stay-body{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:center}
-.stay-body > svg{width:96px;height:auto}
-.stay h3{margin:0;font-size:20px;line-height:1.4;font-weight:400}
-.stay p{margin:2px 0 0;font-size:15px;overflow-wrap:anywhere}
+.stay{background:#F1F4EC}
+.stay .illus{margin:0 0 14px}
+.stay h3{margin:0;font-size:21px;line-height:1.4;font-weight:700;overflow-wrap:anywhere}
+.stay p{margin:2px 0 0;font-size:16px;overflow-wrap:anywhere}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.chip{padding:2px 14px;background:var(--white);border:var(--line);border-radius:999px;font-size:14px}
-@media (max-width:380px){.stay-body{grid-template-columns:1fr}.stay-body > svg{width:80px}}
+.chip{padding:0 12px;background:var(--cream);border:1.5px solid var(--line);border-radius:999px;font-size:15px}
 
-footer{text-align:center;color:var(--ink-soft);font-size:14px}
-footer svg{width:100%;max-width:360px;height:auto;display:block;margin:0 auto 6px}
+footer{text-align:center;color:var(--ink-soft);font-size:16px}
+footer svg{width:100%;max-width:300px;height:auto;display:block;margin:0 auto 4px}
 
 /* motion */
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
-@keyframes sway{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-3px)}}
-@keyframes twinkle{0%,100%{transform:scale(.8);opacity:.7}50%{transform:scale(1.1);opacity:1}}
+@keyframes sway{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-2px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes wobble{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(5px) translateY(-1.5px)}50%{transform:translateX(10px) translateY(0)}75%{transform:translateX(5px) translateY(-1.5px)}}
-@keyframes pop{0%{transform:scale(.88) translateY(14px);opacity:.2}55%{transform:scale(1.04) translateY(-4px);opacity:1}100%{transform:scale(1) translateY(0)}}
-@keyframes tabpop{0%{transform:scale(1)}40%{transform:scale(1.14)}100%{transform:scale(1)}}
+@keyframes wobble{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(5px) translateY(-1.500px)}50%{transform:translateX(10px) translateY(0)}75%{transform:translateX(5px) translateY(-1.500px)}}
+@keyframes pop{0%{transform:scale(.9) translateY(14px);opacity:.2}55%{transform:scale(1.03) translateY(-4px);opacity:1}100%{transform:scale(1) translateY(0)}}
+@keyframes tabpop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes heart{0%{transform:translateY(10px) scale(.4);opacity:0}25%{opacity:1}100%{transform:translateY(-26px) scale(1.15);opacity:0}}
+@keyframes wave{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(20deg)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+@keyframes dash{0%{transform:translateX(0);opacity:0}30%{opacity:1}100%{transform:translateX(-14px);opacity:0}}
+@keyframes glide{0%,100%{transform:translate(-34px,11.800px)}50%{transform:translate(34px,-11.800px)}}
+@keyframes gsway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
 .a{transform-box:fill-box;transform-origin:center}
 .bob{animation:bob 4s ease-in-out infinite}
-.drift{animation:drift 9s ease-in-out infinite}
-.drift2{animation:drift 12s ease-in-out infinite reverse}
-.sway{animation:sway 3.6s ease-in-out infinite}
-.tw1{animation:twinkle 2.4s ease-in-out infinite}
-.tw2{animation:twinkle 3.1s ease-in-out .8s infinite}
-.tw3{animation:twinkle 2.8s ease-in-out 1.4s infinite}
-.spin{animation:spin 26s linear infinite}
+.drift{animation:drift 10s ease-in-out infinite}
+.drift2{animation:drift 13s ease-in-out infinite reverse}
+.sway{animation:sway 3.600s ease-in-out infinite}
 .car{animation:wobble 5s ease-in-out infinite}
+.heart{transform-box:fill-box;transform-origin:center;animation:heart 3s ease-out infinite}
+.wave{animation:wave .9s ease-in-out infinite}
+.wave2{animation:wave .9s ease-in-out .45s infinite reverse}
+.blink{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}
+.wheel{transform-box:fill-box;transform-origin:center;animation:spin 1s linear infinite}
+.speed{animation:dash 1s ease-out infinite}
+.gondola{animation:glide 9s ease-in-out infinite}
+.gsway{animation:gsway 2.200s ease-in-out infinite}
 .pop{animation:pop .5s cubic-bezier(.34,1.56,.64,1)}
 .tabpop{animation:tabpop .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes armH{0%,100%{transform:rotate(12deg)}50%{transform:rotate(-16deg)}}
+@keyframes armW{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(16deg)}}
+@keyframes headH{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-4deg)}}
+@keyframes headW{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
+.bodyH,.bodyW{animation:hop .8s ease-in-out infinite}
+.armH{animation:armH 1.6s ease-in-out infinite}
+.headH{animation:headH 1.6s ease-in-out infinite}
+.armW{animation:armW 1.6s ease-in-out -.8s infinite}
+.headW{animation:headW 1.6s ease-in-out -.8s infinite}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -179,10 +248,26 @@ footer svg{width:100%;max-width:360px;height:auto;display:block;margin:0 auto 6p
 </head>
 <body>
 
+<svg class="defs" aria-hidden="true" focusable="false"><defs>
+<filter id="hd" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="11" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 .36 0 0 0 0 .27 0 0 0 0 .19 0 0 0 .16 0"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D6B6"/><stop offset="1" stop-color="#FAEEDF"/></linearGradient>
+<linearGradient id="gDusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E4F78"/><stop offset=".6" stop-color="#9A7493"/><stop offset="1" stop-color="#E3A98A"/></linearGradient>
+<linearGradient id="gLake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#AFC8D1"/><stop offset="1" stop-color="#86A6B4"/></linearGradient>
+<linearGradient id="gLakeN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E6F92"/><stop offset="1" stop-color="#4A4E6E"/></linearGradient>
+<linearGradient id="gFar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFC8C0"/><stop offset="1" stop-color="#AEBAB2"/></linearGradient>
+<linearGradient id="gMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A0B69A"/><stop offset="1" stop-color="#85A082"/></linearGradient>
+<linearGradient id="gWood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DDBF95"/><stop offset="1" stop-color="#C9A678"/></linearGradient>
+<radialGradient id="gCoffee" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#A56E46"/><stop offset="1" stop-color="#5E3A22"/></radialGradient>
+<linearGradient id="gPork" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A3A1F"/><stop offset=".45" stop-color="#B5653A"/><stop offset="1" stop-color="#94512E"/></linearGradient>
+<linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF3E6"/><stop offset="1" stop-color="#EADCC6"/></linearGradient>
+<linearGradient id="gRoad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4D5BC"/><stop offset="1" stop-color="#D2BF9F"/></linearGradient>
+</defs></svg>
+
 <nav class="nav" aria-label="主選單">
   <div class="nav-in">
     <a class="brand" href="#top" aria-label="回到頂端">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><path d="M5 21q5-5 10 0t12 0" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/><circle cx="21" cy="11" r="3" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/></svg>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13" cy="15" r="9" fill="#F4C98A" stroke="#5A4636" stroke-width="1.6"/><path d="M24 6a8 8 0 1 0 4 13a6.500 6.500 0 1 1-4-13z" fill="#F1E2C0" stroke="#5A4636" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 26q6-4 13 0t13 0" fill="none" stroke="#7E9AA6" stroke-width="1.8" stroke-linecap="round"/></svg>
       <span>日月潭小旅行</span>
     </a>
     <div class="menu">
@@ -196,317 +281,569 @@ footer svg{width:100%;max-width:360px;height:auto;display:block;margin:0 auto 6p
 
 <main class="wrap" id="top">
 
-  <!-- 首頁 -->
-  <header class="hero">
-    <svg viewBox="0 0 360 250" role="img" aria-label="日月潭插畫：湖面上的小船、山丘上的慈恩塔、夜空的煙火，和一輛開在湖邊的小車">
-      <!-- sun -->
-      <g class="spin" style="transform-origin:300px 52px">
-        <g stroke="#3E3A39" stroke-width="3" stroke-linecap="round">
-          <path d="M300 20v-8M300 92v-8M268 52h-8M340 52h-8M277 29l-6-6M329 81l-6-6M323 29l6-6M271 81l6-6"/>
-        </g>
-      </g>
-      <circle cx="300" cy="52" r="22" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-      <!-- fireworks -->
-      <g class="a tw1" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" fill="none">
-        <path d="M58 58v-22M58 58v22M58 58h-22M58 58h22M58 58l-15-15M58 58l15 15M58 58l15-15M58 58l-15 15" stroke="#F2A497"/>
-        <circle cx="58" cy="58" r="6" fill="#F6D27A"/>
-      </g>
-      <g class="a tw2" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" fill="none">
-        <path d="M150 36v-14M150 36v14M150 36h-14M150 36h14M150 36l-10-10M150 36l10 10M150 36l10-10M150 36l-10 10" stroke="#F6D27A"/>
-        <circle cx="150" cy="36" r="5" fill="#F2A497"/>
-      </g>
-      <g class="a tw3">
-        <circle cx="105" cy="92" r="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
-        <circle cx="205" cy="76" r="4" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
-      </g>
-      <!-- clouds -->
-      <g class="a drift">
-        <path d="M200 40q-4-16 12-16q6-10 18-4q14-2 14 12q10 2 8 12h-48q-10-1-4-4z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-      </g>
-      <g class="a drift2">
-        <path d="M14 112q-3-12 9-12q5-8 14-3q11-1 11 9q8 2 6 9h-36q-8 0-4-3z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-      </g>
-      <!-- hills -->
-      <path d="M0 165Q40 125 90 143T170 133Q215 121 256 108Q300 120 360 138V200H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-      <!-- 慈恩塔 -->
-      <g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">
-        <rect x="247" y="94" width="18" height="15" fill="#F6D27A"/>
-        <path d="M242 94H270L265 87H247Z" fill="#F2A497"/>
-        <rect x="249" y="79" width="14" height="8" fill="#F6D27A"/>
-        <path d="M245 79H267L263 72H249Z" fill="#F2A497"/>
-        <rect x="251" y="65" width="10" height="7" fill="#F6D27A"/>
-        <path d="M247 65H265L261 58H251Z" fill="#F2A497"/>
-        <path d="M256 58V48" stroke-linecap="round"/>
-      </g>
-      <circle cx="256" cy="46" r="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
-      <!-- trees -->
-      <g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round">
-        <circle cx="46" cy="150" r="13" fill="#B9DAA5"/><path d="M46 163v8" stroke-linecap="round"/>
-        <circle cx="112" cy="150" r="10" fill="#B9DAA5"/><path d="M112 160v7" stroke-linecap="round"/>
-        <circle cx="318" cy="143" r="12" fill="#B9DAA5"/><path d="M318 155v8" stroke-linecap="round"/>
-      </g>
-      <!-- lake -->
-      <path d="M0 176Q45 164 90 176T180 176T270 176T360 176V246H0Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-      <g fill="none" stroke="#FFFCF6" stroke-width="3" stroke-linecap="round">
-        <path d="M24 196q8-6 16 0t16 0"/><path d="M196 200q8-6 16 0t16 0"/><path d="M150 222q8-6 16 0t16 0"/><path d="M286 204q8-6 16 0t16 0"/>
-      </g>
-      <!-- boat -->
-      <g class="sway" style="transform-origin:110px 214px">
-        <path d="M110 198V166L134 198Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M84 198H138L128 214H94Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-      </g>
-      <!-- foreground & car -->
-      <path d="M0 238Q90 228 180 236T360 233V250H0Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-      <g class="car">
-        <rect x="232" y="214" width="58" height="20" rx="9" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-        <path d="M243 214L250 200H272L281 214Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M252 213L256 203H264V213ZM268 213V203H272L277 213Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
-        <circle cx="245" cy="235" r="6" fill="#3E3A39"/><circle cx="245" cy="235" r="2" fill="#FFFCF6"/>
-        <circle cx="277" cy="235" r="6" fill="#3E3A39"/><circle cx="277" cy="235" r="2" fill="#FFFCF6"/>
-      </g>
-    </svg>
+  <header class="card hero">
+    <div class="scene">
+      <svg class="scene-bg" viewBox="0 0 360 260" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="360" height="260" fill="url(#gSky)"/><circle cx="292" cy="50" r="36" fill="#F6D7A0" opacity=".35"/><circle cx="292" cy="50" r="21" fill="#F4C98A"/><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><path d="M0 98L236 16" stroke="#6B5A4A" stroke-width="1.3"/><path d="M0 101.5L238 19" stroke="#6B5A4A" stroke-width=".9" opacity=".6"/><path d="M190 30v-6" stroke="#5A4636" stroke-width="1.1"/><rect x="183" y="33" width="15" height="11" rx="3" fill="#E9A88F" stroke="#5A4636" stroke-width="1.1"/><path d="M190 32v1" stroke="#5A4636"/><path d="M0 124Q46 74 104 98Q152 62 204 90Q256 58 306 86Q338 76 360 84V170H0Z" fill="url(#gFar)"/><path d="M0 124Q46 74 104 98Q152 62 204 90Q256 58 306 86Q338 76 360 84" fill="none" stroke="#8E9A92" stroke-width="1.1"/><path d="M0 140Q38 104 86 118Q136 98 186 116Q236 102 286 114Q328 104 360 112V170H0Z" fill="url(#gMid)" stroke="#6E8669" stroke-width="1.1"/><g fill="#7F9A78" opacity=".75"><circle cx="20" cy="130" r="5"/><circle cx="28" cy="126" r="4"/><circle cx="124" cy="108" r="5"/><circle cx="132" cy="106" r="4"/><circle cx="216" cy="110" r="5"/><circle cx="226" cy="108" r="4"/><circle cx="310" cy="110" r="4"/><circle cx="320" cy="108" r="5"/></g><g stroke="#5A4636" stroke-width="1" stroke-linejoin="round"><path d="M48 133h62v4H48z" fill="#E7DAC4"/><rect x="56" y="120" width="46" height="13" fill="#EFE3CF"/><path d="M60 121v12M67 121v12M74 121v12M81 121v12M88 121v12M95 121v12" stroke="#A8483A" stroke-width="1.6"/><path d="M48 122Q52 116 56 115H102Q106 116 110 122Q79 117 48 122Z" fill="#D7A04A"/><rect x="64" y="107" width="30" height="8" fill="#EFE3CF"/><path d="M68 108v7M74 108v7M80 108v7M86 108v7M90 108v7" stroke="#A8483A" stroke-width="1.3"/><path d="M57 109Q61 103 64 102H94Q97 103 101 109Q79 104 57 109Z" fill="#D7A04A"/><path d="M65 102Q70 96 79 94Q88 96 93 102Q79 99 65 102Z" fill="#C98F3E"/><path d="M56 119h46M64 106h30" stroke="#A97A33" stroke-width=".8"/></g><path d="M0 142Q90 134 180 140T360 138V232H0Z" fill="url(#gLake)"/><path d="M0 142Q38 160 86 154Q136 166 186 156Q236 164 286 158Q328 164 360 158V142Z" fill="#7F9A7A" opacity=".22"/><rect x="56" y="143" width="46" height="9" fill="#D7A04A" opacity=".16"/><g stroke="#F4EFE6" stroke-width="1.6" opacity=".7"><path d="M24 178h26M150 190h34M250 176h22M306 198h28M60 206h30M200 210h24"/></g><g stroke="#5A4636" stroke-width="1" stroke-linejoin="round"><rect x="276" y="129" width="72" height="11" fill="#A9BCC2"/><path d="M284 129v11M292 129v11M300 129v11M308 129v11M316 129v11M324 129v11M332 129v11M340 129v11" stroke="#7E929A" stroke-width=".8"/><path d="M262 128Q306 116 358 124V128Q306 121 262 132Z" fill="#ECE6DC"/></g><path d="M262 132Q306 124 358 128" fill="none" stroke="#B9AFA2" stroke-width="1.5"/><rect x="270" y="142" width="84" height="8" fill="#ECE6DC" opacity=".3"/><ellipse cx="200" cy="163" rx="31" ry="7.5" fill="none" stroke="#F7F2EA" stroke-width="2.4"/><ellipse cx="200" cy="163" rx="17" ry="4.5" fill="#7E9A6E" stroke="#5A4636" stroke-width="1"/><g stroke="#5A4636" stroke-width="1"><circle cx="194" cy="156" r="6" fill="#5F7E58"/><circle cx="204" cy="153" r="7.5" fill="#6E8C64"/><circle cx="211" cy="158" r="4.5" fill="#5F7E58"/></g><path d="M0 222Q180 208 360 218V260H0Z" fill="#A4B98F"/><path d="M0 233Q180 221 360 231V260H0Z" fill="url(#gRoad)" stroke="#B9A584" stroke-width="1"/><path d="M6 248Q180 237 354 246" stroke="#FFF8EA" stroke-width="2" stroke-dasharray="10 9" fill="none"/><path d="M162.9 231.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="162.9" cy="225.6" r="2.7" fill="#D58E86"/><path d="M162.7 234.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="162.7" cy="228.6" r="1.8" fill="#C7B4D6"/><path d="M171.3 232.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="171.3" cy="226.1" r="1.8" fill="#D58E86"/><path d="M109.2 226.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="109.2" cy="220.9" r="2.6" fill="#E3A99A"/><path d="M214.4 230.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="214.4" cy="224.0" r="2.1" fill="#C7B4D6"/><path d="M234.0 232.2v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="234.0" cy="226.2" r="2.6" fill="#E3A99A"/><path d="M21.4 227.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="21.4" cy="221.9" r="1.9" fill="#E3A99A"/><path d="M280.1 229.3v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="280.1" cy="223.3" r="2.3" fill="#F1D08F"/><path d="M186.9 232.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="186.9" cy="226.4" r="2.2" fill="#E3A99A"/><path d="M164.6 228.8v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="164.6" cy="222.8" r="2.8" fill="#E3A99A"/><path d="M254.8 229.2v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="254.8" cy="223.2" r="1.9" fill="#FFF6EA"/><path d="M10.7 231.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="10.7" cy="225.6" r="1.7" fill="#E3A99A"/><path d="M304.8 229.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="304.8" cy="223.9" r="2.7" fill="#E3A99A"/><path d="M76.9 235.3v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="76.9" cy="229.3" r="1.7" fill="#D58E86"/><path d="M352.9 230.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="352.9" cy="224.0" r="1.7" fill="#F1D08F"/><path d="M280.3 228.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="280.3" cy="222.7" r="1.7" fill="#FFF6EA"/><path d="M5.5 230.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="5.5" cy="224.1" r="2.7" fill="#F1D08F"/><path d="M88.7 227.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="88.7" cy="221.0" r="1.7" fill="#D58E86"/><path d="M64.0 231.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="64.0" cy="225.6" r="2.1" fill="#F1D08F"/><path d="M354.7 233.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="354.7" cy="227.7" r="2.1" fill="#D58E86"/><path d="M41.9 230.2v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="41.9" cy="224.2" r="1.9" fill="#FFF6EA"/><path d="M311.2 235.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="311.2" cy="229.7" r="2.3" fill="#E3A99A"/></g><rect width="360" height="260" filter="url(#grain)"/></svg>
+      <svg class="scene-fg" viewBox="0 0 360 260" role="img" preserveAspectRatio="xMidYMid slice" aria-label="日月潭手繪風景：遠山層疊，左邊山腰上有文武廟，湖中央是拉魯島，右岸是向山遊客中心，纜車在空中滑過，遊湖船輕輕搖晃；前方一對Q版夫妻坐在敞篷小車上揮手，老公短髮、老婆長髮"><g class="a drift"><path transform="translate(36 20) scale(1.1)" opacity="0.95" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/></g><g class="a drift2"><path transform="translate(138 10) scale(0.85)" opacity="0.9" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/></g><g class="gondola"><g class="gsway" style="transform-origin:120px 56px"><path d="M120 56v9" stroke="#5A4636" stroke-width="1.3"/><rect x="110" y="65" width="20" height="15" rx="4" fill="#E9A88F" stroke="#5A4636" stroke-width="1.3"/><rect x="113" y="68" width="14" height="5" rx="1.5" fill="#CFE0E6" stroke="#5A4636" stroke-width=".8"/></g></g><g class="sway" style="transform-origin:84px 186px"><path d="M54 188q-12 2-24 0" stroke="#F4EFE6" stroke-width="1.4" fill="none"/><path d="M58 178h52l-6 9H64z" fill="#FFFAF2" stroke="#5A4636" stroke-width="1.2"/><path d="M60 182h48" stroke="#6E8FA8" stroke-width="2"/><rect x="70" y="170" width="28" height="8" rx="2" fill="#F4EFE6" stroke="#5A4636" stroke-width="1"/><path d="M74 173h4M82 173h4M90 173h4" stroke="#7E929A" stroke-width="2"/></g><g transform="translate(112 158) scale(1.25)">
+        <g class="car">
+          <g transform="translate(-10 0)"><!-- speed lines -->
+          <g stroke="#5A4636" stroke-width="2.2" stroke-linecap="round" fill="none">
+            <path class="speed" d="M-8 48h-12"/><path class="speed" style="animation-delay:.35s" d="M-4 58h-14"/><path class="speed" style="animation-delay:.7s" d="M-6 38h-10"/>
+          </g>
+          </g><g transform="translate(0 -18)"><!-- hearts -->
+          <g stroke="#5A4636" stroke-width="2" stroke-linejoin="round">
+            <path class="heart" d="M57 -14c-3-6-10-1 0 7c10-8 3-13 0-7z" fill="#E3A99A"/>
+            <path class="heart" style="animation-delay:1s" d="M46 -12c-2-4-7-1 0 5c7-6 2-9 0-5z" fill="#E8BC6E"/>
+            <path class="heart" style="animation-delay:2s" d="M68 -12c-2-4-7-1 0 5c7-6 2-9 0-5z" fill="#A9C2CF"/>
+          </g>
+          </g><path d="M6 -12H101L113 36H6Z" fill="#DCE8EC" opacity=".55"/><path d="M-2 -14Q-2 -24 8 -24H92Q102 -24 106 -14L104 -12H0Z" fill="#93B1AE" stroke="#5A4636" stroke-width="2" stroke-linejoin="round"/><path d="M-2 -14H6V36H-2Z" fill="#93B1AE" stroke="#5A4636" stroke-width="2" stroke-linejoin="round"/><path d="M100 -14H106L120 36H113Z" fill="#93B1AE" stroke="#5A4636" stroke-width="2" stroke-linejoin="round"/><path d="M10 -28H90" stroke="#5A4636" stroke-width="2.2" stroke-linecap="round"/><path d="M16 -28V-24M84 -28V-24" stroke="#5A4636" stroke-width="2"/><g class="bodyH"><rect x="24" y="30" width="24" height="18" rx="9" fill="#A9C2CF" stroke="#5A4636" stroke-width="2.2"/><!-- husband arm -->
+          <g class="armH" style="transform-origin:27px 39px">
+            <path d="M27 39L11 26" stroke="#5A4636" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M27 39L11 26" stroke="#A9C2CF" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <circle cx="9" cy="24" r="5" fill="#FBE3D0" stroke="#5A4636" stroke-width="1.8"/>
+          </g>
+          <!-- husband big head -->
+          <g class="headH" style="transform-origin:36px 32px">
+            <g transform="rotate(7 36 14)">
+              <circle cx="36" cy="14" r="20" fill="#FBE3D0" stroke="#5A4636" stroke-width="2.2"/>
+              <path d="M16 14Q15 -8 36 -8Q57 -8 56 14Q51 3 43 5Q38 -1 32 5Q22 3 16 14Z" fill="#5B4637" stroke="#5A4636" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M36 -8q-3-7 5-9" stroke="#5A4636" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <g class="blink">
+                <ellipse cx="29" cy="17" rx="3.600" ry="4.600" fill="#5A4636"/><ellipse cx="43" cy="17" rx="3.600" ry="4.600" fill="#5A4636"/>
+                <circle cx="28" cy="15.500" r="1.400" fill="#fff"/><circle cx="42" cy="15.500" r="1.400" fill="#fff"/>
+              </g>
+              <ellipse cx="24" cy="24" rx="4" ry="2.500" fill="#E3A99A"/><ellipse cx="48" cy="24" rx="4" ry="2.500" fill="#E3A99A"/>
+              <path d="M32 25q2 2.500 4 0q2 2.500 4 0" stroke="#5A4636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </g>
+          </g>
+          </g><g class="bodyW"><rect x="66" y="30" width="24" height="18" rx="9" fill="#E3A99A" stroke="#5A4636" stroke-width="2.2"/><!-- wife arm -->
+          <g class="armW" style="transform-origin:87px 39px">
+            <path d="M87 39L104 26" stroke="#5A4636" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M87 39L104 26" stroke="#E3A99A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <circle cx="106" cy="24" r="5" fill="#FBE3D0" stroke="#5A4636" stroke-width="1.8"/>
+          </g>
+          <!-- wife big head -->
+          <g class="headW" style="transform-origin:78px 32px">
+            <g transform="rotate(-7 78 14)">
+              <circle cx="78" cy="14" r="20" fill="#FBE3D0" stroke="#5A4636" stroke-width="2.2"/>
+              <path d="M90 30L93 52Q100 54 100 48V14Q100 -7 78 -7Q56 -7 56 14V48Q56 54 63 52L66 30A20 20 0 0 1 58 14Q62 5 68 8Q72 1 78 8Q80 1 86 8Q92 5 98 14A20 20 0 0 1 90 30Z" fill="#8A5E44" stroke="#5A4636" stroke-width="2.2" stroke-linejoin="round"/>
+              
+              
+              <g class="blink" style="animation-delay:1.3s">
+                <ellipse cx="71" cy="18" rx="3.800" ry="5" fill="#5A4636"/><ellipse cx="85" cy="18" rx="3.800" ry="5" fill="#5A4636"/>
+                <circle cx="70" cy="16" r="1.600" fill="#fff"/><circle cx="84" cy="16" r="1.600" fill="#fff"/>
+                <circle cx="72.300" cy="20.300" r=".8" fill="#fff"/><circle cx="86.300" cy="20.300" r=".8" fill="#fff"/>
+              </g>
+              <path d="M66.500 13.500l-2-1.500M89.500 13.500l2-1.500" stroke="#5A4636" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="66" cy="25" rx="4" ry="2.500" fill="#E3A99A"/><ellipse cx="90" cy="25" rx="4" ry="2.500" fill="#E3A99A"/>
+              <path d="M74.500 25Q78 30.500 81.500 25Z" fill="#E3A99A" stroke="#5A4636" stroke-width="2" stroke-linejoin="round"/>
+              <g stroke="#5A4636" stroke-width="2" stroke-linejoin="round">
+                <circle cx="94" cy="-1" r="3.200" fill="#E8BC6E"/><circle cx="99" cy="2" r="3.200" fill="#E8BC6E"/><circle cx="97" cy="7" r="3.200" fill="#E8BC6E"/><circle cx="91" cy="5" r="3.200" fill="#E8BC6E"/>
+                <circle cx="95" cy="3" r="2.200" fill="#E3A99A"/>
+              </g>
+            </g>
+          </g>
+          </g><path d="M-8 44Q-8 34 2 34H112Q124 36 124 48V58Q124 64 118 64H-2Q-8 64 -8 58Z" fill="#93B1AE" stroke="#5A4636" stroke-width="2.2" stroke-linejoin="round"/><path d="M-6 39H120" stroke="#B3CAC7" stroke-width="2" stroke-linecap="round"/><path d="M-8 56H124" stroke="#6F8A88" stroke-width="1.4"/><path d="M56 36V58" stroke="#6F8A88" stroke-width="1.4"/><path d="M24 44h7M62 44h7" stroke="#5A4636" stroke-width="2" stroke-linecap="round"/><path d="M5 64A15 15 0 0 1 35 64Z" fill="#6F8A88" stroke="#5A4636" stroke-width="1.6"/><path d="M77 64A15 15 0 0 1 107 64Z" fill="#6F8A88" stroke="#5A4636" stroke-width="1.6"/><path d="M115 40Q122 40 123 47H114Z" fill="#FFF3D6" stroke="#5A4636" stroke-width="1.4" stroke-linejoin="round"/><rect x="-8" y="40" width="5" height="9" rx="2" fill="#D97F6E" stroke="#5A4636" stroke-width="1.2"/><path d="M112 29h7v5h-7z" fill="#93B1AE" stroke="#5A4636" stroke-width="1.4" stroke-linejoin="round"/><circle cx="20" cy="66" r="10" fill="#4A3B2F"/><circle cx="20" cy="66" r="4.500" fill="#E9E1D3"/><g class="wheel" stroke="#E9E1D3" stroke-width="1.8"><path d="M20 59V73M13 66H27"/></g><circle cx="92" cy="66" r="10" fill="#4A3B2F"/><circle cx="92" cy="66" r="4.500" fill="#E9E1D3"/><g class="wheel" stroke="#E9E1D3" stroke-width="1.8"><path d="M92 59V73M85 66H99"/></g></g></g></svg>
+    </div>
     <div class="hero-text">
-      <p class="eyebrow">一日小旅行</p>
-      <h1 class="title">日月潭浪漫之旅</h1>
-      <p class="route">豐原 → 水里 → 日月潭</p>
+      <p class="eyebrow" id="eyebrow"></p>
+      <h1 class="title" id="heroTitle"></h1>
+      <p class="route" id="heroRoute"></p>
       <div class="count" id="count" aria-live="polite"></div>
     </div>
   </header>
 
-  <!-- 交通 -->
   <section id="go" aria-labelledby="go-h">
-    <h2 class="h2" id="go-h"><span class="dot" style="background:var(--coral)"></span>交通資訊</h2>
-    <div class="ticket">
-      <div class="ticket-top"><b>自駕 ＋ 接駁車</b><span class="stamp">一日券</span></div>
-      <div class="legs">
-        <div><p class="city">豐原</p><p class="sub">台中・08:30 出發</p></div>
-        <svg viewBox="0 0 64 40" aria-hidden="true">
-          <path d="M4 20H52" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/>
-          <path d="M44 10L58 20L44 30" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-        </svg>
-        <div><p class="city">日月潭</p><p class="sub">水社・約 17:00</p></div>
-      </div>
-      <div class="ticket-bot">
-        <div><small>去程</small><span><b>自駕</b></span></div>
-        <div><small>停車</small><span><b>水社周邊</b></span></div>
-        <div><small>晚上</small><span><b>接駁車</b></span></div>
-      </div>
-      <a class="ticket-link" id="routeLink" href="#" target="_blank" rel="noopener noreferrer">在 Google 地圖看整趟路線</a>
-    </div>
+    <h2 class="h2" id="go-h"><span class="tape t2">交通資訊</span></h2>
+    <div class="card ticket" id="ticket"></div>
   </section>
 
-  <!-- 行程 -->
   <section id="plan" aria-labelledby="plan-h">
-    <h2 class="h2" id="plan-h"><span class="dot" style="background:var(--yellow)"></span>每日行程</h2>
-    <div class="card">
-      <div class="tabs" role="tablist" aria-label="選擇日期" id="tabs"></div>
-      <p class="day-note" id="dayNote"></p>
-      <div id="panel" role="tabpanel" tabindex="-1">
-        <ol class="tl" id="tl"></ol>
-      </div>
-      <p class="legend" aria-label="標籤說明">
-        <span class="tag drive">自駕</span><span class="tag walk">步行</span><span class="tag bus">接駁車</span><span class="tag must">必去</span>
-      </p>
+    <div class="plan-head">
+      <h2 class="h2" id="plan-h"><span class="tape">每日行程</span></h2>
+      <button class="btn sm" type="button" id="editBtn">編輯行程</button>
     </div>
+    <div id="banner"></div>
+    <div class="card" id="planCard"></div>
+    <div class="card share" id="shareBox"></div>
   </section>
 
-  <!-- 待辦 -->
   <section id="todo" aria-labelledby="todo-h">
-    <h2 class="h2" id="todo-h"><span class="dot" style="background:var(--green)"></span>出發前待辦</h2>
+    <h2 class="h2" id="todo-h"><span class="tape t3">出發前待辦</span></h2>
     <div class="card">
       <div class="progress" aria-hidden="true"><i id="bar"></i></div>
       <p class="progress-t" id="progT"></p>
       <ul class="todo" id="todoList"></ul>
       <form class="add" id="addForm">
-        <input id="addIn" type="text" maxlength="40" placeholder="新增一項待辦" aria-label="新增待辦事項" autocomplete="off">
+        <input class="in" id="addIn" type="text" maxlength="40" placeholder="新增一項待辦" aria-label="新增待辦事項" autocomplete="off">
         <button class="btn" type="submit">新增</button>
       </form>
     </div>
   </section>
 
-  <!-- 住宿 -->
   <section id="stay" aria-labelledby="stay-h">
-    <h2 class="h2" id="stay-h"><span class="dot" style="background:var(--blue)"></span>住宿資訊</h2>
+    <h2 class="h2" id="stay-h"><span class="tape t4">住宿資訊</span></h2>
     <div class="card stay">
-      <div class="stay-body">
-        <svg viewBox="0 0 96 90" role="img" aria-label="民宿小房子插畫">
-          <g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-            <rect x="12" y="38" width="72" height="44" rx="4" fill="#FFFCF6"/>
-            <path d="M6 42L48 10L90 42Z" fill="#F2A497"/>
-            <rect x="40" y="56" width="16" height="26" rx="3" fill="#F6D27A"/>
-            <rect x="19" y="50" width="14" height="14" rx="3" fill="#A8D3E6"/>
-            <rect x="63" y="50" width="14" height="14" rx="3" fill="#A8D3E6"/>
-            <path d="M70 18V8h8v18" fill="#FFFCF6"/>
-          </g>
-          <g class="a bob"><circle cx="82" cy="12" r="4" fill="#fff" stroke="#3E3A39" stroke-width="2.5"/></g>
-        </svg>
-        <div>
-          <h3>恩典花園咖啡民宿</h3>
-          <p>南投縣水里鄉博愛路101號</p>
-          <div class="chips"><span class="chip">16:00 Check-in</span><span class="chip">煙火後回來休息</span></div>
-          <a class="maplink" id="stayMap" href="#" target="_blank" rel="noopener noreferrer"></a>
-        </div>
-      </div>
+      <div class="illus" id="stayPic"></div>
+      <div id="stayInfo"></div>
     </div>
   </section>
 
   <footer>
-    <svg viewBox="0 0 360 70" aria-hidden="true">
-      <g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M0 52Q60 28 120 46T240 44T360 40V70H0Z" fill="#B9DAA5"/>
-        <g class="a bob"><circle cx="70" cy="30" r="9" fill="#F2A497"/></g>
-        <g class="a bob" style="animation-delay:.9s"><circle cx="290" cy="26" r="7" fill="#F6D27A"/></g>
-      </g>
+    <svg viewBox="0 0 300 60" aria-hidden="true">
+      <path d="M10 44Q80 26 150 40T290 36" fill="none" stroke="#C4A98B" stroke-width="1.5" stroke-dasharray="4 6" stroke-linecap="round"/>
+      <g class="a bob"><path d="M150 30c-4-8-14-2 0 9c14-11 4-17 0-9z" fill="#E3A99A" stroke="#5A4636" stroke-width="1.3" stroke-linejoin="round"/></g>
     </svg>
     旅途愉快，玩得開心
   </footer>
 </main>
 
+<div class="ebar" id="ebar" hidden>
+  <div class="ebar-in">
+    <p class="msg" id="emsg" aria-live="polite">編輯中</p>
+    <button class="btn" type="button" id="cancelBtn">取消</button>
+    <button class="btn primary" type="button" id="saveBtn">儲存</button>
+  </div>
+</div>
+
+<template id="il-latte"><svg viewBox="0 0 320 200" role="img" aria-label="木桌上一杯拉花拿鐵，旁邊散著幾顆咖啡豆" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gWood)"/><g stroke="#B48F63" stroke-width="1.1" fill="none" opacity=".55"><path d="M0 30C80 24 170 38 320 26"/><path d="M0 76C100 70 190 84 320 72"/><path d="M0 128C90 122 200 136 320 124"/><path d="M0 176C110 170 220 184 320 172"/></g><g filter="url(#hd)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="170" cy="134" rx="104" ry="40" fill="#6B4A30" opacity=".16"/><ellipse cx="160" cy="124" rx="98" ry="40" fill="#FBF6EE" stroke="#5A4636" stroke-width="1.6"/><ellipse cx="160" cy="124" rx="72" ry="28" fill="#EFE5D5"/><ellipse cx="166" cy="126" rx="64" ry="22" fill="#D3C4AC" opacity=".7"/><path d="M216 96c28-12 38 18 8 26" fill="none" stroke="#5A4636" stroke-width="10"/><path d="M216 96c28-12 38 18 8 26" fill="none" stroke="#FFFDF8" stroke-width="6.5"/><path d="M98 100v6c0 18 28 30 62 30s62-12 62-30v-6" fill="#FFFDF8" stroke="#5A4636" stroke-width="1.6"/><path d="M104 112c10 14 30 20 56 20" fill="none" stroke="#E6DCCC" stroke-width="4"/><ellipse cx="160" cy="100" rx="62" ry="26" fill="#FFFDF8" stroke="#5A4636" stroke-width="1.6"/><ellipse cx="160" cy="101" rx="53" ry="21" fill="url(#gCoffee)"/><ellipse cx="160" cy="101" rx="53" ry="21" fill="none" stroke="#C99467" stroke-width="3" opacity=".75"/><g transform="translate(160 104) scale(1 .5)" fill="#F7EAD6"><path d="M0 30C-26 12-30-8-15-17C-7-21 0-15 0-8C0-15 7-21 15-17C30-8 26 12 0 30Z"/><path d="M0 30C-26 12-30-8-15-17C-7-21 0-15 0-8C0-15 7-21 15-17C30-8 26 12 0 30Z" transform="translate(0 -22) scale(.62)"/><path d="M0 30C-26 12-30-8-15-17C-7-21 0-15 0-8C0-15 7-21 15-17C30-8 26 12 0 30Z" transform="translate(0 -36) scale(.38)"/><path d="M0 -44V28" stroke="#F7EAD6" stroke-width="2.5" fill="none"/><path d="M0 -6C-8 0-8 8 0 14" stroke="#B98258" stroke-width="1.5" fill="none" opacity=".6"/></g><path d="M106 92c14-12 46-18 78-16" fill="none" stroke="#fff" stroke-width="2" opacity=".85"/><path d="M236 146L278 130" stroke="#5A4636" stroke-width="5.5"/><path d="M236 146L278 130" stroke="#D9D0C4" stroke-width="3"/><ellipse cx="228" cy="150" rx="11" ry="5.5" transform="rotate(-20 228 150)" fill="#D9D0C4" stroke="#5A4636" stroke-width="1.2"/><g transform="translate(44 60) rotate(-25)"><ellipse rx="8.5" ry="5.5" fill="#6B3F24" stroke="#5A4636" stroke-width="1"/><path d="M-6 1q6-3 12 0" stroke="#3A2414" stroke-width="1.2" fill="none"/><path d="M-5-2q3-2 6-1" stroke="#9A6A48" stroke-width="1" fill="none"/></g><g transform="translate(62 47) rotate(15)"><ellipse rx="8.5" ry="5.5" fill="#6B3F24" stroke="#5A4636" stroke-width="1"/><path d="M-6 1q6-3 12 0" stroke="#3A2414" stroke-width="1.2" fill="none"/><path d="M-5-2q3-2 6-1" stroke="#9A6A48" stroke-width="1" fill="none"/></g><g transform="translate(282 178) rotate(30)"><ellipse rx="8.5" ry="5.5" fill="#6B3F24" stroke="#5A4636" stroke-width="1"/><path d="M-6 1q6-3 12 0" stroke="#3A2414" stroke-width="1.2" fill="none"/><path d="M-5-2q3-2 6-1" stroke="#9A6A48" stroke-width="1" fill="none"/></g><g transform="translate(40 170) rotate(70)"><ellipse rx="8.5" ry="5.5" fill="#6B3F24" stroke="#5A4636" stroke-width="1"/><path d="M-6 1q6-3 12 0" stroke="#3A2414" stroke-width="1.2" fill="none"/><path d="M-5-2q3-2 6-1" stroke="#9A6A48" stroke-width="1" fill="none"/></g><g stroke="#FFFFFF" stroke-width="2.4" fill="none" opacity=".75"><path d="M146 68c-8-9 7-15 0-26"/><path d="M170 64c-8-9 7-15 0-26"/></g></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+<template id="il-lunch"><svg viewBox="0 0 320 200" role="img" aria-label="木桌上的台式家常菜：一碗白飯、一盤滷肉和滷蛋、一盤炒青菜" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gWood)"/><g stroke="#B48F63" stroke-width="1.1" fill="none" opacity=".55"><path d="M0 30C80 24 170 38 320 26"/><path d="M0 76C100 70 190 84 320 72"/><path d="M0 128C90 122 200 136 320 124"/><path d="M0 176C110 170 220 184 320 172"/></g><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="84" cy="160" rx="52" ry="13" fill="#6B4A30" opacity=".16"/><path d="M32 108Q34 156 80 158Q126 156 128 108Z" fill="#F4EFE6" stroke="#5A4636" stroke-width="1.6"/><path d="M38 124Q80 138 122 124" fill="none" stroke="#8FA8BA" stroke-width="3"/><path d="M44 132Q80 144 116 132" fill="none" stroke="#8FA8BA" stroke-width="1.2"/><path d="M36 112Q40 140 64 152" fill="none" stroke="#E5DDCF" stroke-width="4"/><ellipse cx="80" cy="108" rx="48" ry="13" fill="#FBF8F2" stroke="#5A4636" stroke-width="1.6"/><path d="M38 108Q44 82 80 78Q116 82 122 108Q80 118 38 108Z" fill="#FFFDF7" stroke="#D6CBB9" stroke-width="1.2"/><g stroke="#E2D7C5" stroke-width="1.8"><path d="M58 98l5 -2"/><path d="M70 92l5 1"/><path d="M84 88l4 3"/><path d="M96 96l5 -1"/><path d="M64 105l5 0"/><path d="M80 99l5 -2"/><path d="M102 104l4 2"/><path d="M88 108l5 -1"/><path d="M74 84l4 2"/><path d="M50 104l4 -1"/><path d="M110 100l4 1"/></g><ellipse cx="186" cy="152" rx="74" ry="18" fill="#6B4A30" opacity=".16"/><ellipse cx="182" cy="140" rx="70" ry="28" fill="#FBF6EE" stroke="#5A4636" stroke-width="1.6"/><ellipse cx="182" cy="140" rx="54" ry="20" fill="#F0E6D6"/><ellipse cx="182" cy="142" rx="46" ry="15" fill="#8E4C2A" opacity=".5"/><g transform="translate(158 128) rotate(-8)"><rect x="-14" y="-10" width="28" height="20" rx="5" fill="url(#gPork)" stroke="#5A4636" stroke-width="1"/><path d="M-12 -4h24" stroke="#6A2F17" stroke-width="2.4"/><path d="M-12 0h24M-12 5h24" stroke="#E9C7A0" stroke-width="1.8"/><path d="M-9 -7h11" stroke="#fff" stroke-width="1.3" opacity=".75"/></g><g transform="translate(186 122) rotate(7)"><rect x="-14" y="-10" width="28" height="20" rx="5" fill="url(#gPork)" stroke="#5A4636" stroke-width="1"/><path d="M-12 -4h24" stroke="#6A2F17" stroke-width="2.4"/><path d="M-12 0h24M-12 5h24" stroke="#E9C7A0" stroke-width="1.8"/><path d="M-9 -7h11" stroke="#fff" stroke-width="1.3" opacity=".75"/></g><g transform="translate(208 134) rotate(-5)"><rect x="-14" y="-10" width="28" height="20" rx="5" fill="url(#gPork)" stroke="#5A4636" stroke-width="1"/><path d="M-12 -4h24" stroke="#6A2F17" stroke-width="2.4"/><path d="M-12 0h24M-12 5h24" stroke="#E9C7A0" stroke-width="1.8"/><path d="M-9 -7h11" stroke="#fff" stroke-width="1.3" opacity=".75"/></g><g transform="translate(172 146) rotate(10)"><rect x="-14" y="-10" width="28" height="20" rx="5" fill="url(#gPork)" stroke="#5A4636" stroke-width="1"/><path d="M-12 -4h24" stroke="#6A2F17" stroke-width="2.4"/><path d="M-12 0h24M-12 5h24" stroke="#E9C7A0" stroke-width="1.8"/><path d="M-9 -7h11" stroke="#fff" stroke-width="1.3" opacity=".75"/></g><g transform="translate(214 150) rotate(-12)"><ellipse rx="14" ry="9.5" fill="#9C6337" stroke="#5A4636" stroke-width="1"/><ellipse cx="1" rx="8" ry="5.5" fill="#F0E2C2"/><circle cx="1" r="3.8" fill="#E3A94B"/></g><g fill="#7FA35A"><circle cx="168" cy="124" r="1.8"/><circle cx="194" cy="130" r="1.6"/><circle cx="180" cy="138" r="1.8"/><circle cx="202" cy="122" r="1.5"/><circle cx="160" cy="140" r="1.5"/></g><ellipse cx="270" cy="112" rx="48" ry="11" fill="#6B4A30" opacity=".14"/><ellipse cx="266" cy="100" rx="46" ry="20" fill="#FBF6EE" stroke="#5A4636" stroke-width="1.6"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(240 98) rotate(-10)" fill="#6F9A55" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(252 90) rotate(20)" fill="#86B06A" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(268 98) rotate(-25)" fill="#5E8848" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(248 104) rotate(15)" fill="#6F9A55" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(274 90) rotate(5)" fill="#86B06A" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(260 106) rotate(-5)" fill="#5E8848" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(280 100) rotate(30)" fill="#6F9A55" stroke="#4E6E3C" stroke-width="1"/><path d="M0 0q11-11 24-4q-9 11-24 4z" transform="translate(256 96) rotate(40)" fill="#86B06A" stroke="#4E6E3C" stroke-width="1"/><g stroke="#C9DA9C" stroke-width="1.6"><path d="M248 100l8 -3"/><path d="M266 104l7 2"/><path d="M276 96l6 -2"/></g><g fill="#F3E9CF"><circle cx="254" cy="94" r="1.6"/><circle cx="270" cy="92" r="1.6"/><circle cx="262" cy="102" r="1.6"/><circle cx="282" cy="96" r="1.6"/></g><ellipse cx="292" cy="176" rx="9" ry="5" fill="#E0A98F" stroke="#5A4636" stroke-width="1"/><path d="M150 194L306 162M156 198L308 168" stroke="#8A5A3A" stroke-width="3.4"/><path d="M150 194L306 162" stroke="#B07A52" stroke-width="1" opacity=".7"/></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+<template id="il-walk"><svg viewBox="0 0 320 200" role="img" aria-label="水里上安的鄉間小路：遠山、檳榔樹、田野、小溪和一座粉色拱橋" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gSky)"/><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><path transform="translate(36 26) scale(1.0)" opacity="1" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/><path transform="translate(196 18) scale(0.8)" opacity="0.9" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/><path d="M0 96Q40 62 92 80Q142 50 194 74Q244 48 320 72V200H0Z" fill="url(#gFar)"/><path d="M0 96Q40 62 92 80Q142 50 194 74Q244 48 320 72" fill="none" stroke="#8E9A92" stroke-width="1"/><path d="M0 118Q60 90 120 106Q190 84 250 102Q290 94 320 102V200H0Z" fill="url(#gMid)" stroke="#6E8669" stroke-width="1"/><path d="M226 112Q227 89.0 227 66" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M227 66q-10 0-15 8M227 66q10 0 15 8M227 66q-7-6-15-5M227 66q7-6 15-5M227 66q1-8 4-11M227 66q-3-7-7-9"/></g><path d="M242 112Q243 85.0 243 58" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M243 58q-10 0-15 8M243 58q10 0 15 8M243 58q-7-6-15-5M243 58q7-6 15-5M243 58q1-8 4-11M243 58q-3-7-7-9"/></g><path d="M258 112Q259 90.0 259 68" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M259 68q-10 0-15 8M259 68q10 0 15 8M259 68q-7-6-15-5M259 68q7-6 15-5M259 68q1-8 4-11M259 68q-3-7-7-9"/></g><path d="M276 112Q277 86.0 277 60" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M277 60q-10 0-15 8M277 60q10 0 15 8M277 60q-7-6-15-5M277 60q7-6 15-5M277 60q1-8 4-11M277 60q-3-7-7-9"/></g><path d="M294 112Q295 91.0 295 70" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M295 70q-10 0-15 8M295 70q10 0 15 8M295 70q-7-6-15-5M295 70q7-6 15-5M295 70q1-8 4-11M295 70q-3-7-7-9"/></g><path d="M36 112Q37 98.0 37 84" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M37 84q-10 0-15 8M37 84q10 0 15 8M37 84q-7-6-15-5M37 84q7-6 15-5M37 84q1-8 4-11M37 84q-3-7-7-9"/></g><path d="M52 112Q53 95.0 53 78" stroke="#8B7A62" stroke-width="1.6" fill="none"/><g stroke="#5F8550" stroke-width="2" fill="none"><path d="M53 78q-10 0-15 8M53 78q10 0 15 8M53 78q-7-6-15-5M53 78q7-6 15-5M53 78q1-8 4-11M53 78q-3-7-7-9"/></g><path d="M0 132Q160 120 320 130V200H0Z" fill="#BFC495"/><g stroke="#A3AC7C" stroke-width="1" fill="none" opacity=".8"><path d="M0 140Q160 130 320 138"/><path d="M0 150Q160 140 320 148"/><path d="M0 162Q160 152 320 160"/><path d="M0 176Q160 166 320 174"/><path d="M0 190Q160 180 320 188"/></g><circle cx="96" cy="150" r="10" fill="#86A276" stroke="#5F7A55" stroke-width="1"/><circle cx="110" cy="146" r="8" fill="#86A276" stroke="#5F7A55" stroke-width="1"/><circle cx="228" cy="146" r="9" fill="#86A276" stroke="#5F7A55" stroke-width="1"/><circle cx="60" cy="160" r="7" fill="#86A276" stroke="#5F7A55" stroke-width="1"/><path d="M24 200Q80 172 136 164Q176 158 204 140L216 142Q192 164 152 176Q100 188 76 200Z" fill="#A9C4CF" stroke="#7E9AA6" stroke-width="1"/><g stroke="#F4EFE6" stroke-width="1.3" opacity=".8"><path d="M70 188h14M118 176h12M168 164h10"/></g><path d="M116 172Q148 136 180 166" fill="none" stroke="#B87676" stroke-width="4.5"/><path d="M116 172Q148 136 180 166" fill="none" stroke="#E2A9A6" stroke-width="2.5"/><path d="M112 160Q148 144 184 156" fill="none" stroke="#D99A98" stroke-width="3"/><path d="M122 147Q148 134 178 144" fill="none" stroke="#D99A98" stroke-width="2"/><g stroke="#D99A98" stroke-width="1.5"><path d="M124 157V148"/><path d="M134 153V143"/><path d="M144 150V140"/><path d="M154 149V139"/><path d="M164 150V140"/><path d="M174 152V143"/></g><path d="M214 200Q222 172 248 154Q264 142 304 134L310 138Q272 152 260 164Q240 184 246 200Z" fill="#E4D4BA" stroke="#C4AE8C" stroke-width="1"/><path d="M76.1 193.8v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="76.1" cy="187.8" r="2.0" fill="#C7B4D6"/><path d="M151.7 194.5v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="151.7" cy="188.5" r="2.3" fill="#D58E86"/><path d="M83.0 188.2v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="83.0" cy="182.2" r="2.8" fill="#D58E86"/><path d="M173.1 193.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="173.1" cy="187.9" r="2.1" fill="#F1D08F"/><path d="M74.2 186.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="74.2" cy="180.7" r="2.7" fill="#D58E86"/><path d="M237.2 196.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="237.2" cy="190.1" r="1.7" fill="#C7B4D6"/><path d="M13.7 198.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="13.7" cy="192.0" r="2.6" fill="#FFF6EA"/><path d="M151.3 196.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="151.3" cy="190.9" r="2.7" fill="#D58E86"/><path d="M126.4 198.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="126.4" cy="192.4" r="2.1" fill="#F1D08F"/><path d="M281.2 185.8v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="281.2" cy="179.8" r="1.8" fill="#F1D08F"/><path d="M82.6 196.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="82.6" cy="190.1" r="2.5" fill="#FFF6EA"/><path d="M134.8 199.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="134.8" cy="193.0" r="2.3" fill="#C7B4D6"/><path d="M187.2 194.5v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="187.2" cy="188.5" r="2.7" fill="#E3A99A"/><path d="M274.0 201.8v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="274.0" cy="195.8" r="2.4" fill="#F1D08F"/><path d="M223.6 189.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="223.6" cy="183.9" r="2.3" fill="#C7B4D6"/><path d="M182.1 196.8v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="182.1" cy="190.8" r="1.9" fill="#C7B4D6"/><path d="M85.5 186.2v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="85.5" cy="180.2" r="2.2" fill="#D58E86"/><path d="M28.3 198.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="28.3" cy="192.4" r="2.1" fill="#F1D08F"/><path d="M6.4 191.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="6.4" cy="185.7" r="2.1" fill="#E3A99A"/><path d="M14.1 195.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="14.1" cy="189.1" r="1.7" fill="#C7B4D6"/><path d="M105.9 199.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="105.9" cy="193.9" r="2.8" fill="#C7B4D6"/><path d="M75.5 184.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="75.5" cy="178.6" r="1.6" fill="#E3A99A"/><path d="M191.9 184.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="191.9" cy="178.6" r="1.8" fill="#D58E86"/><path d="M93.3 188.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="93.3" cy="182.7" r="2.4" fill="#FFF6EA"/><path d="M100.4 201.3v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="100.4" cy="195.3" r="2.7" fill="#D58E86"/><path d="M120.6 199.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="120.6" cy="193.7" r="2.1" fill="#C7B4D6"/></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+<template id="il-chekeng"><svg viewBox="0 0 320 200" role="img" aria-label="車埕：山谷裡的木造建築立在貯木池上，池面漂著原木，旁邊停著一列小火車" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gSky)"/><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><path transform="translate(30 20) scale(0.9)" opacity="1" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/><path d="M0 104Q24 46 70 74Q112 36 160 66Q206 30 252 62Q290 44 320 56V200H0Z" fill="url(#gFar)"/><path d="M0 124Q50 92 104 108Q156 86 212 104Q270 88 320 100V200H0Z" fill="url(#gMid)" stroke="#6E8669" stroke-width="1"/><path d="M0 138H150V154H0Z" fill="#CDBC9C"/><g stroke="#8A7458" stroke-width="2"><path d="M4 146v7"/><path d="M13 146v7"/><path d="M22 146v7"/><path d="M31 146v7"/><path d="M40 146v7"/><path d="M49 146v7"/><path d="M58 146v7"/><path d="M67 146v7"/><path d="M76 146v7"/><path d="M85 146v7"/><path d="M94 146v7"/><path d="M103 146v7"/><path d="M112 146v7"/><path d="M121 146v7"/><path d="M130 146v7"/><path d="M139 146v7"/></g><path d="M0 147H146M0 152H146" stroke="#6B5A4A" stroke-width="1.4"/><g stroke="#5A4636" stroke-width="1.2"><path d="M14 116H118Q130 116 134 128V142H14Z" fill="#EFE6D2"/><path d="M14 132H134V142H14Z" fill="#C7785C"/><path d="M14 116H118Q130 116 134 128" fill="none" stroke="#9C8F7E" stroke-width="3"/><rect x="20" y="120" width="13" height="9" rx="1.5" fill="#6F8798"/><rect x="38" y="120" width="13" height="9" rx="1.5" fill="#6F8798"/><rect x="56" y="120" width="13" height="9" rx="1.5" fill="#6F8798"/><rect x="74" y="120" width="13" height="9" rx="1.5" fill="#6F8798"/><rect x="92" y="120" width="13" height="9" rx="1.5" fill="#6F8798"/><path d="M112 120H120Q127 121 129 128H112Z" fill="#6F8798"/></g><g fill="#4A3B2F"><circle cx="30" cy="144" r="3.5"/><circle cx="44" cy="144" r="3.5"/><circle cx="104" cy="144" r="3.5"/><circle cx="118" cy="144" r="3.5"/></g><g stroke="#6E4A2E" stroke-width="2.4"><path d="M160 136v18"/><path d="M180 136v18"/><path d="M200 136v18"/><path d="M220 136v18"/><path d="M240 136v18"/><path d="M260 136v18"/><path d="M280 136v18"/><path d="M300 136v18"/></g><rect x="152" y="98" width="152" height="36" fill="#9C6B44" stroke="#5A4636" stroke-width="1.2"/><g stroke="#80553A" stroke-width=".8"><path d="M158 120v14"/><path d="M165 120v14"/><path d="M172 120v14"/><path d="M179 120v14"/><path d="M186 120v14"/><path d="M193 120v14"/><path d="M200 120v14"/><path d="M207 120v14"/><path d="M214 120v14"/><path d="M221 120v14"/><path d="M228 120v14"/><path d="M235 120v14"/><path d="M242 120v14"/><path d="M249 120v14"/><path d="M256 120v14"/><path d="M263 120v14"/><path d="M270 120v14"/><path d="M277 120v14"/><path d="M284 120v14"/><path d="M291 120v14"/><path d="M298 120v14"/></g><rect x="160" y="105" width="136" height="13" fill="#EBCB8F" stroke="#5A4636" stroke-width="1"/><g stroke="#80553A" stroke-width="1"><path d="M172 105v13"/><path d="M184 105v13"/><path d="M196 105v13"/><path d="M208 105v13"/><path d="M220 105v13"/><path d="M232 105v13"/><path d="M244 105v13"/><path d="M256 105v13"/><path d="M268 105v13"/><path d="M280 105v13"/><path d="M292 105v13"/></g><path d="M140 100L172 76H284L316 100Z" fill="#5F5A55" stroke="#5A4636" stroke-width="1.2"/><path d="M150 93H306M161 85H295" stroke="#46423E" stroke-width=".9"/><rect x="146" y="134" width="164" height="5" fill="#B48C62" stroke="#5A4636" stroke-width="1"/><path d="M0 154H146V139H320V200H0Z" fill="url(#gLake)"/><rect x="152" y="140" width="152" height="20" fill="#7E5A3E" opacity=".28"/><rect x="160" y="142" width="136" height="6" fill="#EBCB8F" opacity=".22"/><g transform="translate(16 166) rotate(-6)"><path d="M2 7Q35.0 11 70 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="70" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H62" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H58" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="70" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="70" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g><g transform="translate(100 176) rotate(4)"><path d="M2 7Q41.0 11 82 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="82" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H74" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H70" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="82" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="82" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g><g transform="translate(190 168) rotate(-3)"><path d="M2 7Q33.0 11 66 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="66" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H58" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H54" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="66" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="66" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g><g transform="translate(240 186) rotate(8)"><path d="M2 7Q31.0 11 62 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="62" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H54" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H50" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="62" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="62" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g><g transform="translate(44 190) rotate(2)"><path d="M2 7Q36.0 11 72 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="72" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H64" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H60" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="72" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="72" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g><g transform="translate(150 192) rotate(-5)"><path d="M2 7Q29.0 11 58 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="58" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H50" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H46" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="58" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="58" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g><g transform="translate(270 164) rotate(3)"><path d="M2 7Q22.0 11 44 7" stroke="#F4EFE6" stroke-width="1.2" fill="none" opacity=".7"/><rect x="0" y="-5" width="44" height="10" rx="5" fill="#B08356" stroke="#5A4636" stroke-width="1"/><path d="M6 -1.5H36" stroke="#8E6640" stroke-width=".9"/><path d="M8 2H32" stroke="#C9A27A" stroke-width=".8"/><ellipse cx="44" cy="0" rx="3.8" ry="5" fill="#E2C59B" stroke="#5A4636" stroke-width=".8"/><ellipse cx="44" cy="0" rx="1.6" ry="2.2" fill="none" stroke="#B9935E" stroke-width=".7"/></g></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+<template id="il-stay"><svg viewBox="0 0 320 200" role="img" aria-label="恩典花園咖啡民宿：兩層樓的米白房子，暖黃窗光、木陽台和開滿花的庭院" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gSky)"/><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><path transform="translate(220 18) scale(0.9)" opacity="1" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/><path d="M0 92Q60 64 120 82Q190 58 250 78Q290 70 320 76V200H0Z" fill="url(#gFar)"/><circle cx="30" cy="110" r="22" fill="#86A276" stroke="#5F7A55" stroke-width="1"/><circle cx="66" cy="96" r="18" fill="#7E9A72" stroke="#5F7A55" stroke-width="1"/><circle cx="282" cy="100" r="24" fill="#86A276" stroke="#5F7A55" stroke-width="1"/><circle cx="306" cy="116" r="18" fill="#7E9A72" stroke="#5F7A55" stroke-width="1"/><circle cx="254" cy="112" r="14" fill="#93AE84" stroke="#5F7A55" stroke-width="1"/><path d="M0 156Q160 148 320 156V200H0Z" fill="#A9BC8F"/><rect x="236" y="104" width="52" height="54" fill="url(#gWall)" stroke="#5A4636" stroke-width="1.2"/><path d="M228 106L262 84L296 106Z" fill="#9B5E43" stroke="#5A4636" stroke-width="1.2"/><rect x="246" y="118" width="16" height="16" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M254 118v16M246 126h16" stroke="#FFF8EA" stroke-width="1.2"/><rect x="266" y="118" width="16" height="16" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M274 118v16M266 126h16" stroke="#FFF8EA" stroke-width="1.2"/><rect x="96" y="76" width="140" height="82" fill="url(#gWall)" stroke="#5A4636" stroke-width="1.3"/><path d="M84 80L166 34L248 80Z" fill="#9B5E43" stroke="#5A4636" stroke-width="1.3"/><path d="M100 72L166 40L232 72M116 64L166 44L216 64" stroke="#7E4A33" stroke-width=".9" fill="none"/><rect x="156" y="52" width="20" height="16" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M166 52v16" stroke="#FFF8EA" stroke-width="1.2"/><rect x="112" y="86" width="26" height="22" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M125 86v22M112 97h26" stroke="#FFF8EA" stroke-width="1.3"/><rect x="196" y="86" width="26" height="22" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M209 86v22M196 97h26" stroke="#FFF8EA" stroke-width="1.3"/><rect x="102" y="112" width="128" height="4" fill="#B48C62" stroke="#5A4636" stroke-width=".8"/><g stroke="#9C7650" stroke-width="1.2"><path d="M106 104v8"/><path d="M114 104v8"/><path d="M122 104v8"/><path d="M130 104v8"/><path d="M138 104v8"/><path d="M146 104v8"/><path d="M154 104v8"/><path d="M162 104v8"/><path d="M170 104v8"/><path d="M178 104v8"/><path d="M186 104v8"/><path d="M194 104v8"/><path d="M202 104v8"/><path d="M210 104v8"/><path d="M218 104v8"/><path d="M226 104v8"/></g><path d="M102 104H230" stroke="#9C7650" stroke-width="1.6"/><rect x="152" y="122" width="28" height="36" fill="#A87B54" stroke="#5A4636" stroke-width="1.1"/><rect x="158" y="128" width="16" height="12" fill="#F2D49A" stroke="#5A4636" stroke-width=".8"/><circle cx="175" cy="144" r="1.4" fill="#F1D08F"/><rect x="108" y="124" width="32" height="22" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M124 124v22M108 135h32" stroke="#FFF8EA" stroke-width="1.3"/><rect x="194" y="124" width="32" height="22" fill="#F2D49A" stroke="#5A4636" stroke-width="1"/><path d="M210 124v22M194 135h32" stroke="#FFF8EA" stroke-width="1.3"/><circle cx="146" cy="128" r="7" fill="#F6D9A0" opacity=".5"/><circle cx="146" cy="128" r="2.4" fill="#F1C76E" stroke="#5A4636" stroke-width=".8"/><rect x="240" y="140" width="40" height="13" rx="2" fill="#F4EBDD" stroke="#5A4636" stroke-width="1"/><text x="260" y="150" text-anchor="middle" font-size="8" fill="#5A4636" font-family="LXGW WenKai TC, serif">花園咖啡</text><path d="M54 128V166" stroke="#8A7458" stroke-width="1.6"/><path d="M26 130Q54 104 82 130Z" fill="#F4EBDD" stroke="#5A4636" stroke-width="1.2"/><path d="M44 130L54 110L64 130" fill="#E3A99A" stroke="none"/><ellipse cx="54" cy="160" rx="18" ry="4" fill="#E9DCC6" stroke="#5A4636" stroke-width="1"/><path d="M54 160v12" stroke="#8A7458" stroke-width="1.6"/><ellipse cx="166" cy="166" rx="10" ry="3" fill="#E7DCCB" stroke="#B9A88E" stroke-width=".8"/><ellipse cx="160" cy="176" rx="11" ry="3" fill="#E7DCCB" stroke="#B9A88E" stroke-width=".8"/><ellipse cx="168" cy="188" rx="12" ry="3" fill="#E7DCCB" stroke="#B9A88E" stroke-width=".8"/><g stroke="#B9A88E" stroke-width="1"><path d="M4 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M14 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M24 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M34 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M44 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M54 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M64 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M74 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M84 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M94 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M104 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M114 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M124 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M134 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M186 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M196 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M206 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M216 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M226 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M236 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M246 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M256 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M266 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M276 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M286 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M296 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M306 172V160l3-3 3 3V172Z" fill="#FFFAF1"/><path d="M316 172V160l3-3 3 3V172Z" fill="#FFFAF1"/></g><path d="M0 166H146M182 166H320" stroke="#B9A88E" stroke-width="1.4"/><path d="M103.6 185.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="103.6" cy="179.0" r="2.4" fill="#E3A99A"/><path d="M262.8 183.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="262.8" cy="177.9" r="2.3" fill="#C7B4D6"/><path d="M68.7 183.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="68.7" cy="177.7" r="2.1" fill="#F1D08F"/><path d="M29.0 190.5v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="29.0" cy="184.5" r="2.6" fill="#E3A99A"/><path d="M303.2 194.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="303.2" cy="188.6" r="2.3" fill="#E3A99A"/><path d="M184.7 189.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="184.7" cy="183.9" r="2.8" fill="#E3A99A"/><path d="M178.1 184.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="178.1" cy="178.7" r="2.1" fill="#C7B4D6"/><path d="M37.7 188.2v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="37.7" cy="182.2" r="2.6" fill="#F1D08F"/><path d="M33.0 193.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="33.0" cy="187.4" r="1.8" fill="#E3A99A"/><path d="M175.3 183.3v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="175.3" cy="177.3" r="1.7" fill="#F1D08F"/><path d="M158.9 192.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="158.9" cy="186.6" r="2.5" fill="#D58E86"/><path d="M187.4 191.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="187.4" cy="185.1" r="2.0" fill="#F1D08F"/><path d="M223.7 186.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="223.7" cy="180.9" r="2.3" fill="#C7B4D6"/><path d="M158.4 188.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="158.4" cy="182.9" r="2.1" fill="#C7B4D6"/><path d="M313.7 184.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="313.7" cy="178.4" r="2.1" fill="#FFF6EA"/><path d="M48.6 191.8v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="48.6" cy="185.8" r="1.6" fill="#E3A99A"/><path d="M244.7 193.5v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="244.7" cy="187.5" r="2.7" fill="#FFF6EA"/><path d="M108.8 189.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="108.8" cy="183.0" r="2.2" fill="#D58E86"/><path d="M22.0 183.9v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="22.0" cy="177.9" r="1.9" fill="#E3A99A"/><path d="M19.4 196.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="19.4" cy="190.0" r="2.4" fill="#D58E86"/><path d="M91.1 189.7v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="91.1" cy="183.7" r="2.4" fill="#E3A99A"/><path d="M301.0 189.1v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="301.0" cy="183.1" r="2.3" fill="#D58E86"/><path d="M18.9 197.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="18.9" cy="191.4" r="1.8" fill="#F1D08F"/><path d="M127.3 200.3v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="127.3" cy="194.3" r="2.2" fill="#F1D08F"/><path d="M143.7 193.0v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="143.7" cy="187.0" r="2.7" fill="#D58E86"/><path d="M276.5 187.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="276.5" cy="181.6" r="2.1" fill="#FFF6EA"/><path d="M218.5 189.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="218.5" cy="183.6" r="1.9" fill="#E3A99A"/><path d="M56.4 186.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="56.4" cy="180.6" r="1.9" fill="#D58E86"/><path d="M265.9 185.6v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="265.9" cy="179.6" r="1.9" fill="#F1D08F"/><path d="M134.1 189.4v-6" stroke="#6E8F5A" stroke-width="1"/><circle cx="134.1" cy="183.4" r="2.3" fill="#F1D08F"/></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+<template id="il-night"><svg viewBox="0 0 320 200" role="img" aria-label="夜晚的向山遊客中心：長長的弧形清水模屋頂下透出暖光，湖面倒影，天空綻放煙火" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gDusk)"/><g fill="#FFF4D8"><circle cx="199" cy="53" r="1.2" opacity=".8"/><circle cx="302" cy="53" r="1.2" opacity=".8"/><circle cx="9" cy="35" r="1.3" opacity=".8"/><circle cx="208" cy="63" r="0.7" opacity=".8"/><circle cx="150" cy="20" r="1.0" opacity=".8"/><circle cx="184" cy="5" r="0.8" opacity=".8"/><circle cx="89" cy="64" r="1.1" opacity=".8"/><circle cx="51" cy="57" r="0.7" opacity=".8"/><circle cx="198" cy="12" r="0.6" opacity=".8"/><circle cx="279" cy="18" r="0.8" opacity=".8"/><circle cx="314" cy="62" r="0.8" opacity=".8"/><circle cx="308" cy="40" r="1.1" opacity=".8"/><circle cx="66" cy="66" r="1.1" opacity=".8"/><circle cx="309" cy="63" r="0.8" opacity=".8"/><circle cx="116" cy="15" r="0.7" opacity=".8"/><circle cx="21" cy="24" r="1.0" opacity=".8"/><circle cx="1" cy="49" r="0.8" opacity=".8"/><circle cx="99" cy="58" r="0.9" opacity=".8"/><circle cx="101" cy="36" r="1.1" opacity=".8"/><circle cx="18" cy="68" r="0.6" opacity=".8"/><circle cx="240" cy="60" r="0.6" opacity=".8"/><circle cx="252" cy="28" r="1.0" opacity=".8"/></g><g stroke-linecap="round"><path d="M106.8 52.8L131.6 54.6" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="135.8" cy="54.9" r="1.3" fill="#FBE7B5"/><path d="M106.4 55.0L124.9 60.3" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="128.4" cy="61.2" r="1.3" fill="#FBE7B5"/><path d="M103.9 59.4L121.0 75.4" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="124.1" cy="78.2" r="1.3" fill="#FBE7B5"/><path d="M101.1 61.5L111.0 79.7" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="112.8" cy="83.0" r="1.3" fill="#FBE7B5"/><path d="M97.7 62.7L101.2 85.0" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="101.9" cy="89.0" r="1.3" fill="#FBE7B5"/><path d="M94.0 62.6L90.3 82.0" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="89.6" cy="85.6" r="1.3" fill="#FBE7B5"/><path d="M90.7 61.4L80.3 79.9" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="78.4" cy="83.3" r="1.3" fill="#FBE7B5"/><path d="M87.5 58.6L67.6 74.1" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="64.2" cy="76.8" r="1.3" fill="#FBE7B5"/><path d="M85.6 55.0L64.2 61.0" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="60.4" cy="62.1" r="1.3" fill="#FBE7B5"/><path d="M85.2 52.1L64.7 52.3" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="61.0" cy="52.3" r="1.3" fill="#FBE7B5"/><path d="M85.6 49.1L67.4 43.9" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="64.0" cy="43.0" r="1.3" fill="#FBE7B5"/><path d="M87.7 45.1L71.7 31.8" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="68.8" cy="29.4" r="1.3" fill="#FBE7B5"/><path d="M90.4 42.8L77.8 21.8" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="75.6" cy="18.1" r="1.3" fill="#FBE7B5"/><path d="M94.2 41.4L90.4 19.3" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="89.7" cy="15.4" r="1.3" fill="#FBE7B5"/><path d="M97.4 41.3L99.9 22.6" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="100.4" cy="19.1" r="1.3" fill="#FBE7B5"/><path d="M101.1 42.5L110.5 25.3" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="112.2" cy="22.0" r="1.3" fill="#FBE7B5"/><path d="M104.3 45.1L123.6 28.9" stroke="#FBE7B5" stroke-width="1.6" opacity=".9"/><circle cx="126.9" cy="26.1" r="1.3" fill="#FBE7B5"/><path d="M106.2 48.6L125.1 42.3" stroke="#F6C77A" stroke-width="1.6" opacity=".9"/><circle cx="128.6" cy="41.1" r="1.3" fill="#FBE7B5"/><circle cx="96" cy="52" r="4.3" fill="#FBE7B5" opacity=".9"/></g><g stroke-linecap="round"><path d="M204.4 37.6L221.7 36.9" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="224.8" cy="36.8" r="1.3" fill="#FBD9C9"/><path d="M203.8 41.1L220.2 47.4" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="223.1" cy="48.6" r="1.3" fill="#FBD9C9"/><path d="M201.8 44.1L212.1 54.8" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="214.1" cy="56.8" r="1.3" fill="#FBD9C9"/><path d="M199.8 45.5L208.3 62.2" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="209.8" cy="65.1" r="1.3" fill="#FBD9C9"/><path d="M196.3 46.4L196.9 62.1" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="197.0" cy="65.0" r="1.3" fill="#FBD9C9"/><path d="M192.2 45.5L184.5 60.6" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="183.1" cy="63.3" r="1.3" fill="#FBD9C9"/><path d="M189.7 43.6L177.1 54.9" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="174.9" cy="57.0" r="1.3" fill="#FBD9C9"/><path d="M188.2 41.0L173.9 46.6" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="171.2" cy="47.6" r="1.3" fill="#FBD9C9"/><path d="M187.6 37.8L168.7 37.4" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="165.4" cy="37.3" r="1.3" fill="#FBD9C9"/><path d="M188.3 34.8L171.4 27.7" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="168.4" cy="26.5" r="1.3" fill="#FBD9C9"/><path d="M190.2 31.9L180.0 21.1" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="178.1" cy="19.1" r="1.3" fill="#FBD9C9"/><path d="M193.1 30.1L187.1 13.6" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="186.0" cy="10.7" r="1.3" fill="#FBD9C9"/><path d="M195.7 29.6L195.3 14.9" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="195.2" cy="12.1" r="1.3" fill="#FBD9C9"/><path d="M199.7 30.4L207.1 15.2" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="208.4" cy="12.5" r="1.3" fill="#FBD9C9"/><path d="M202.1 32.3L216.0 19.3" stroke="#FBD9C9" stroke-width="1.6" opacity=".9"/><circle cx="218.4" cy="17.1" r="1.3" fill="#FBD9C9"/><path d="M203.9 35.1L221.8 28.3" stroke="#F29C86" stroke-width="1.6" opacity=".9"/><circle cx="224.9" cy="27.2" r="1.3" fill="#FBD9C9"/><circle cx="196" cy="38" r="3.4" fill="#FBD9C9" opacity=".9"/></g><g stroke-linecap="round"><path d="M268.6 65.7L280.4 65.2" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="282.6" cy="65.1" r="1.3" fill="#F8E6B0"/><path d="M268.0 68.8L278.9 73.8" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="281.0" cy="74.8" r="1.3" fill="#F8E6B0"/><path d="M266.5 70.9L275.3 80.5" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="276.9" cy="82.2" r="1.3" fill="#F8E6B0"/><path d="M263.0 72.5L265.3 86.9" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="265.7" cy="89.5" r="1.3" fill="#F8E6B0"/><path d="M260.3 72.4L257.0 84.2" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="256.4" cy="86.4" r="1.3" fill="#F8E6B0"/><path d="M257.9 71.1L250.0 80.9" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="248.5" cy="82.7" r="1.3" fill="#F8E6B0"/><path d="M256.2 69.2L245.8 74.9" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="243.9" cy="75.9" r="1.3" fill="#F8E6B0"/><path d="M255.4 66.3L240.3 67.0" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="237.7" cy="67.1" r="1.3" fill="#F8E6B0"/><path d="M256.2 62.8L243.4 55.8" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="241.1" cy="54.6" r="1.3" fill="#F8E6B0"/><path d="M258.1 60.6L251.0 50.8" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="249.7" cy="48.9" r="1.3" fill="#F8E6B0"/><path d="M260.3 59.6L256.8 46.1" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="256.2" cy="43.8" r="1.3" fill="#F8E6B0"/><path d="M263.7 59.6L267.5 45.3" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="268.2" cy="42.8" r="1.3" fill="#F8E6B0"/><path d="M266.4 61.1L274.3 52.4" stroke="#F8E6B0" stroke-width="1.6" opacity=".9"/><circle cx="275.8" cy="50.7" r="1.3" fill="#F8E6B0"/><path d="M268.0 63.2L280.8 57.3" stroke="#BFD7E3" stroke-width="1.6" opacity=".9"/><circle cx="283.1" cy="56.3" r="1.3" fill="#F8E6B0"/><circle cx="262" cy="66" r="2.6" fill="#F8E6B0" opacity=".9"/></g><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><path d="M0 104Q50 76 104 92Q160 66 214 88Q270 70 320 84V150H0Z" fill="#7A7397"/><path d="M0 118Q60 98 120 110Q190 94 250 108Q290 100 320 106V150H0Z" fill="#4F5372"/><rect y="136" width="320" height="64" fill="url(#gLakeN)"/><path d="M58 125Q160 108 270 117V138H58Z" fill="#F2C77E" stroke="#5A4636" stroke-width="1"/><g stroke="#B9874A" stroke-width="1"><path d="M70 120V138"/><path d="M84 120V138"/><path d="M98 120V138"/><path d="M112 120V138"/><path d="M126 120V138"/><path d="M140 120V138"/><path d="M154 120V138"/><path d="M168 120V138"/><path d="M182 120V138"/><path d="M196 120V138"/><path d="M210 120V138"/><path d="M224 120V138"/><path d="M238 120V138"/><path d="M252 120V138"/><path d="M266 120V138"/></g><g fill="#5A4636" opacity=".55"><circle cx="96" cy="133" r="1.6"/><path d="M94.5 134.5h3v3.5h-3z"/><circle cx="102" cy="133" r="1.6"/><path d="M100.5 134.5h3v3.5h-3z"/><circle cx="180" cy="133" r="1.6"/><path d="M178.5 134.5h3v3.5h-3z"/><circle cx="186" cy="133" r="1.6"/><path d="M184.5 134.5h3v3.5h-3z"/><circle cx="230" cy="133" r="1.6"/><path d="M228.5 134.5h3v3.5h-3z"/></g><path d="M28 120Q160 98 298 112L298 118Q160 106 28 127Z" fill="#E9E4DC" stroke="#5A4636" stroke-width="1.2"/><path d="M28 127Q160 106 298 118" stroke="#B7AEA3" stroke-width="2.2" fill="none"/><rect x="46" y="137" width="236" height="5" fill="#CFC6B9" stroke="#5A4636" stroke-width="1"/><path d="M58 143H270V166H58Z" fill="#F2C77E" opacity=".22"/><g stroke="#F6D9A0" stroke-width="1.4" opacity=".55"><path d="M70 150h40"/><path d="M130 156h60"/><path d="M200 150h40"/><path d="M90 164h30"/><path d="M160 170h50"/><path d="M240 162h24"/></g><g fill="#FBE7B5" opacity=".45"><circle cx="96" cy="182" r="2"/><circle cx="196" cy="188" r="2"/><circle cx="262" cy="178" r="1.6"/></g></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+<template id="il-lake"><svg viewBox="0 0 320 200" role="img" aria-label="日月潭湖景：湖中央的拉魯島、遊湖船、碼頭和空中的纜車" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="url(#gSky)"/><g filter="url(#hd)" stroke-linejoin="round" stroke-linecap="round"><path transform="translate(150 14) scale(0.9)" opacity="0.95" d="M0 10q-2-10 9-10q5-7 13-3q10-1 10 8q7 2 5 7h-33q-7 0-4-2z" fill="#FFFAF2" stroke="#C9B49A" stroke-width="1"/><path d="M0 84L210 10" stroke="#6B5A4A" stroke-width="1.2"/><path d="M60 62.9v8" stroke="#5A4636" stroke-width="1.2"/><rect x="52" y="70.9" width="16" height="12" rx="3" fill="#E9A88F" stroke="#5A4636" stroke-width="1.1"/><rect x="54.5" y="73.4" width="11" height="4" rx="1" fill="#CFE0E6"/><path d="M150 31.1v8" stroke="#5A4636" stroke-width="1.2"/><rect x="142" y="39.1" width="16" height="12" rx="3" fill="#E9A88F" stroke="#5A4636" stroke-width="1.1"/><rect x="144.5" y="41.6" width="11" height="4" rx="1" fill="#CFE0E6"/><g stroke="#6B5A4A" stroke-width="1.2" fill="none"><path d="M250 40q4-4 8 0q4-4 8 0"/><path d="M270 52q3-3 6 0q3-3 6 0"/></g><path d="M0 104Q46 62 104 86Q152 52 204 80Q256 50 306 76Q330 70 320 74V140H0Z" fill="url(#gFar)"/><path d="M0 118Q38 92 86 104Q136 86 186 102Q236 90 286 100Q312 94 320 98V140H0Z" fill="url(#gMid)" stroke="#6E8669" stroke-width="1"/><path d="M0 126Q160 118 320 124V200H0Z" fill="url(#gLake)"/><path d="M0 126Q40 140 86 134Q136 146 186 136Q236 144 286 138Q312 142 320 140V126Z" fill="#7F9A7A" opacity=".22"/><g stroke="#F4EFE6" stroke-width="1.5" opacity=".7"><path d="M24 164h28M120 176h36M232 160h22M270 186h30M60 190h24"/></g><ellipse cx="166" cy="150" rx="46" ry="11" fill="none" stroke="#F7F2EA" stroke-width="3"/><ellipse cx="166" cy="150" rx="46" ry="11" fill="none" stroke="#B9AFA2" stroke-width=".8"/><ellipse cx="166" cy="150" rx="26" ry="6.5" fill="#7E9A6E" stroke="#5A4636" stroke-width="1"/><g stroke="#5A4636" stroke-width="1"><circle cx="156" cy="141" r="8" fill="#5F7E58"/><circle cx="170" cy="137" r="10" fill="#6E8C64"/><circle cx="182" cy="144" r="6" fill="#5F7E58"/></g><path d="M150 148q16 4 32 0" stroke="#4E6A49" stroke-width="1" fill="none"/><g transform="translate(54 150) scale(1)"><path d="M-6 9q-14 2-26 0" stroke="#F4EFE6" stroke-width="1.4" fill="none"/><path d="M-4 0h40l-5 8H1z" fill="#FFFAF2" stroke="#5A4636" stroke-width="1.1"/><path d="M-2 4h36" stroke="#6E8FA8" stroke-width="1.8"/><rect x="6" y="-7" width="22" height="7" rx="2" fill="#F4EFE6" stroke="#5A4636" stroke-width="1"/><path d="M9-4.5h3M15-4.5h3M21-4.5h3" stroke="#7E929A" stroke-width="2"/></g><g transform="translate(238 172) scale(1.2)"><path d="M-6 9q-14 2-26 0" stroke="#F4EFE6" stroke-width="1.4" fill="none"/><path d="M-4 0h40l-5 8H1z" fill="#FFFAF2" stroke="#5A4636" stroke-width="1.1"/><path d="M-2 4h36" stroke="#6E8FA8" stroke-width="1.8"/><rect x="6" y="-7" width="22" height="7" rx="2" fill="#F4EFE6" stroke="#5A4636" stroke-width="1"/><path d="M9-4.5h3M15-4.5h3M21-4.5h3" stroke="#7E929A" stroke-width="2"/></g><g stroke="#5A4636" stroke-width="1.1"><path d="M262 178v18"/><path d="M280 178v18"/><path d="M298 178v18"/><path d="M316 178v18"/></g><path d="M250 176H320V182H250Z" fill="#C9A27A" stroke="#5A4636" stroke-width="1.1"/></g><rect width="320" height="200" filter="url(#grain)"/></svg></template>
+
 <script>
 (function(){
 'use strict';
 
-/* ---------- 資料 ---------- */
-var DAYS=[{
-  id:'d1',label:'Day 1',sub:'豐原出發',
-  note:'自駕出遊，晚上搭接駁車到向山看音樂會和煙火。',
-  stops:[
-    {t:'08:30',n:'豐原出發',a:'台中豐原',q:'台中市豐原區',tags:['drive']},
-    {t:'10:00～11:00',n:'妮珂森咖啡 Niksen Café',a:'南投國姓鄉',q:'妮珂森咖啡 Niksen Café 國姓鄉',tags:['drive']},
-    {t:'12:00～13:30',n:'阿成的家（午餐）',a:'南投縣水里鄉上安村三部路36號',q:'阿成的家 南投縣水里鄉上安村三部路36號',tags:['drive'],must:true},
-    {t:'13:30～14:30',n:'上安周邊散步／拍照',a:'水里鄉上安村',q:'南投縣水里鄉上安村',tags:['walk']},
-    {t:'14:30～15:30',n:'車埕老街＋貯木池',a:'水里鄉車埕',q:'車埕老街 南投縣水里鄉',tags:['drive','walk'],must:true},
-    {t:'16:00',n:'恩典花園咖啡民宿 Check-in',a:'南投縣水里鄉博愛路101號',q:'恩典花園咖啡民宿 南投縣水里鄉博愛路101號',tags:['drive']},
-    {t:'16:00～16:30',n:'民宿休息',a:'',q:'',tags:[],note:'小睡一下，補充體力。'},
-    {t:'16:30 左右',n:'出發往日月潭',a:'',q:'',tags:['drive']},
-    {t:'約 17:00',n:'抵達水社周邊停車',a:'日月潭水社',q:'日月潭水社碼頭停車場',tags:['drive','bus'],note:'停好車，再搭接駁車前往向山。'},
-    {t:'晚上',n:'向山遊客中心 音樂會＋煙火',a:'日月潭向山',q:'日月潭向山遊客中心',tags:['bus'],must:true},
-    {t:'煙火後',n:'返回水里民宿',a:'南投縣水里鄉博愛路101號',q:'恩典花園咖啡民宿 南投縣水里鄉博愛路101號',tags:['bus','drive']}
-  ]
-}];
-var TAGNAME={drive:'自駕',walk:'步行',bus:'接駁車'};
+/* ---------- 預設資料 ---------- */
+var DEFAULT={
+  hero:{title:'日月潭浪漫之旅',route:'豐原 → 水里 → 日月潭'},
+  transport:{
+    title:'全程自駕',
+    from:{c:'豐原',s:'台中・08:30 出發'},
+    to:{c:'日月潭',s:'水社・約 17:00'},
+    boxes:[{k:'去程',v:'自駕'},{k:'停車',v:'水社周邊'},{k:'晚上',v:'向山'}]
+  },
+  days:[{
+    label:'第一天',sub:'豐原出發',
+    note:'全程自駕，晚上到向山看音樂會和煙火。',
+    stops:[
+      {t:'08:30',n:'豐原出發',a:'台中豐原',q:'台中市豐原區',tags:['drive'],must:false,note:'',img:'auto'},
+      {t:'10:00～11:00',n:'妮珂森咖啡',a:'南投國姓鄉',q:'妮珂森咖啡 Niksen Café 國姓鄉',tags:['drive'],must:false,note:'',img:'auto'},
+      {t:'12:00～13:30',n:'阿成的家（午餐）',a:'南投縣水里鄉上安村三部路36號',q:'阿成的家 南投縣水里鄉上安村三部路36號',tags:['drive'],must:true,note:'',img:'auto'},
+      {t:'13:30～14:30',n:'上安周邊散步／拍照',a:'水里鄉上安村',q:'南投縣水里鄉上安村',tags:['walk'],must:false,note:'',img:'auto'},
+      {t:'14:30～15:30',n:'車埕老街＋貯木池',a:'水里鄉車埕',q:'車埕老街 南投縣水里鄉',tags:['drive','walk'],must:true,note:'',img:'auto'},
+      {t:'16:00',n:'恩典花園咖啡民宿 入住',a:'南投縣水里鄉博愛路101號',q:'恩典花園咖啡民宿 南投縣水里鄉博愛路101號',tags:['drive'],must:false,note:'',img:'auto'},
+      {t:'16:00～16:30',n:'民宿休息',a:'',q:'',tags:[],must:false,note:'小睡一下，補充體力。',img:'auto'},
+      {t:'16:30 左右',n:'出發往日月潭',a:'',q:'',tags:['drive'],must:false,note:'',img:'auto'},
+      {t:'約 17:00',n:'抵達水社周邊停車',a:'日月潭水社',q:'日月潭水社碼頭停車場',tags:['drive'],must:false,note:'',img:'auto'},
+      {t:'晚上',n:'向山遊客中心 音樂會＋煙火',a:'日月潭向山',q:'日月潭向山遊客中心',tags:['drive'],must:true,note:'',img:'auto'},
+      {t:'煙火後',n:'返回水里民宿',a:'南投縣水里鄉博愛路101號',q:'恩典花園咖啡民宿 南投縣水里鄉博愛路101號',tags:['drive'],must:false,note:'',img:'auto'}
+    ]
+  }],
+  stay:{name:'恩典花園咖啡民宿',addr:'南投縣水里鄉博愛路101號',chips:['16:00 入住','煙火後回來休息']}
+};
 var DEFAULT_TODO=[
   '確認向山遊客中心音樂會與煙火的場次、時間',
   '預約阿成的家午餐',
-  '確認恩典花園咖啡民宿 16:00 Check-in',
-  '確認水社周邊停車位與接駁車時間',
+  '確認恩典花園咖啡民宿 16:00 入住',
+  '確認日月潭周邊停車位',
   '車子檢查、加滿油',
   '帶薄外套（山上晚上比較涼）',
   '手機和行動電源充飽電',
   '帶相機和記憶卡'
 ];
+var TAGNAME={drive:'自駕',walk:'步行'};
+var ILLUS=[['auto','自動判斷'],['none','不顯示插圖'],['latte','咖啡廳'],['lunch','台式午餐'],['walk','鄉間散步'],['chekeng','車埕貯木池'],['stay','民宿'],['lake','日月潭湖景'],['night','向山夜景煙火']];
+var ILLUS_KEYS=ILLUS.map(function(x){return x[0];});
+var KEY_DATA='trip-data-v2',KEY_DATE='trip-date',KEY_TODO='trip-todo-v1';
+var CN='零一二三四五六七八九十';
+function cn(n){if(n<=10)return CN.charAt(n);if(n<20)return '十'+(n%10?CN.charAt(n%10):'');return String(n);}
 
 /* ---------- 小工具 ---------- */
 function $(id){return document.getElementById(id);}
 function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
-function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
-function mapHref(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
-var pin='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.500-6-6.500-11a6.500 6.500 0 0 1 13 0c0 5-6.500 11-6.500 11z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.500" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.400" fill="#fff" stroke="#3E3A39" stroke-width="2"/></svg>';
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){return null;}}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function mapHref(q){q=String(q||'').trim();if(/^https?:\/\//i.test(q))return q;return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function bounce(node,cls){if(reduce||!node)return;node.classList.remove(cls);void node.offsetWidth;node.classList.add(cls);}
+var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.500-6-6.500-11a6.500 6.500 0 0 1 13 0c0 5-6.500 11-6.500 11z" fill="#E3A99A" stroke="#5A4636" stroke-width="1.800" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.400" fill="#FFFAF1" stroke="#5A4636" stroke-width="1.500"/></svg>';
+function illusNode(key){
+  var t=$('il-'+key);if(!t)return null;
+  var f=el('figure','illus');f.appendChild(t.content.cloneNode(true));return f;
+}
+function guess(s){
+  var t=s.n+' '+s.a+' '+s.note;
+  if(/煙火|音樂會|向山/.test(t))return 'night';
+  if(/車埕|貯木/.test(t))return 'chekeng';
+  if(/午餐|晚餐|早餐|阿成/.test(t))return 'lunch';
+  if(/民宿/.test(t)&&/入住|check/i.test(t))return 'stay';
+  if(/咖啡/.test(t)&&!/民宿/.test(t))return 'latte';
+  if(/散步|拍照|步道/.test(t))return 'walk';
+  if(/水社|拉魯|日月潭/.test(t)&&!/出發/.test(t))return 'lake';
+  return '';
+}
+function pickIllus(s){if(s.img==='none')return '';if(s.img&&s.img!=='auto')return s.img;return guess(s);}
 
-/* ---------- 整趟路線 ---------- */
-(function(){
-  var pts=['台中市豐原區','妮珂森咖啡 Niksen Café 國姓鄉','阿成的家 南投縣水里鄉上安村三部路36號','車埕老街 南投縣水里鄉','恩典花園咖啡民宿 南投縣水里鄉博愛路101號','日月潭水社碼頭停車場'];
-  var e=encodeURIComponent;
-  $('routeLink').href='https://www.google.com/maps/dir/?api=1&origin='+e(pts[0])+'&destination='+e(pts[pts.length-1])+'&waypoints='+pts.slice(1,-1).map(e).join('%7C')+'&travelmode=driving';
-  var s=$('stayMap');s.href=mapHref('恩典花園咖啡民宿 南投縣水里鄉博愛路101號');s.innerHTML=pin+'<span>在 Google 地圖開啟</span>';
+/* ---------- 資料驗證（含舊版英文轉中文） ---------- */
+function zh(v){return String(v==null?'':v).replace(/Check-in/gi,'入住').replace(/\s*Niksen Caf[eé]/gi,'');}
+function S(v,n){return zh(v).slice(0,n);}
+function clean(d){
+  try{
+    if(!d||typeof d!=='object'||!Array.isArray(d.days)||!d.days.length)return null;
+    var h=d.hero||{},t=d.transport||{},f=t.from||{},to=t.to||{},st=d.stay||{};
+    var boxes=(Array.isArray(t.boxes)?t.boxes:[]).slice(0,3).map(function(b){return {k:S(b&&b.k,10),v:S(b&&b.v,14)};});
+    while(boxes.length<3)boxes.push({k:'',v:''});
+    var days=d.days.slice(0,14).map(function(x,i){
+      x=x||{};
+      var stops=(Array.isArray(x.stops)?x.stops:[]).slice(0,40).map(function(s){
+        s=s||{};
+        var tg=(Array.isArray(s.tags)?s.tags:[]).filter(function(k){return k==='drive'||k==='walk';});
+        var img=ILLUS_KEYS.indexOf(s.img)>=0?s.img:'auto';
+        return {t:S(s.t,24),n:S(s.n,60),a:S(s.a,80),q:String(s.q==null?'':s.q).slice(0,400),note:S(s.note,100),tags:tg,must:!!s.must,img:img};
+      });
+      var lab=S(x.label,10).replace(/^Day\s*(\d+)$/i,function(_,n){return '第'+cn(+n)+'天';});
+      return {label:lab||('第'+cn(i+1)+'天'),sub:S(x.sub,12),note:S(x.note,120),stops:stops};
+    });
+    return {
+      hero:{title:S(h.title,24),route:S(h.route,40)},
+      transport:{title:S(t.title,16),from:{c:S(f.c,10),s:S(f.s,24)},to:{c:S(to.c,10),s:S(to.s,24)},boxes:boxes},
+      days:days,
+      stay:{name:S(st.name,30),addr:S(st.addr,60),chips:(Array.isArray(st.chips)?st.chips:[]).slice(0,6).map(function(c){return S(c,20);}).filter(Boolean)}
+    };
+  }catch(e){return null;}
+}
+function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+function dec(s){try{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return JSON.parse(decodeURIComponent(escape(atob(s))));}catch(e){return null;}}
+
+/* ---------- 載入 ---------- */
+var fromShare=false;
+var data=(function(){
+  var m=/^#d=(.+)$/.exec(location.hash||'');
+  if(m){var c=clean(dec(m[1]));if(c){fromShare=true;return c;}}
+  try{var l=clean(JSON.parse(store(KEY_DATA)));if(l)return l;}catch(e){}
+  return clean(clone(DEFAULT));
 })();
+var draft=null,cur=0,armed=null,focusId=null;
 
-/* ---------- 出發倒數 ---------- */
-var KEY_DATE='trip-date';
+/* ---------- 倒數 ---------- */
 function parseDate(v){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||'');return m?new Date(+m[1],+m[2]-1,+m[3],8,30,0):null;}
 function renderCount(){
   var box=$('count');box.textContent='';
   var v=store(KEY_DATE),t=parseDate(v),ms=t?t-new Date():0;
   var lab=el('p','lab');
-  if(!t){
-    lab.textContent='選好出發日期，開始倒數';box.appendChild(lab);
-  }else if(ms>0){
-    lab.textContent='距離 '+(t.getMonth()+1)+'/'+t.getDate()+' 08:30 出發還有';box.appendChild(lab);
+  if(!t){lab.textContent='選好出發日期，開始倒數';box.appendChild(lab);}
+  else if(ms>0){
+    lab.textContent='距離 '+(t.getMonth()+1)+' 月 '+t.getDate()+' 日早上八點半出發，還有';box.appendChild(lab);
     var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);
     var boxes=el('div','cd-boxes');
     [[d,'天'],[h,'小時'],[m,'分鐘']].forEach(function(x){var b=el('div','cd-box');b.appendChild(el('span','cd-num',String(x[0])));b.appendChild(el('span','cd-unit',x[1]));boxes.appendChild(b);});
     box.appendChild(boxes);
-  }else if(ms>-864e5){
-    box.appendChild(el('p','big','今天出發，玩得開心！'));
-  }else{
-    box.appendChild(el('p','big','這趟旅程結束了，期待下一次出發'));
-  }
+  }else if(ms>-864e5){box.appendChild(el('p','big','今天出發，玩得開心！'));}
+  else{box.appendChild(el('p','big','這趟旅程結束了，期待下一次出發'));}
   var w=el('div','datewrap');
   var lb=el('label',null,'出發日期');lb.setAttribute('for','dateIn');
-  var inp=el('input','date');inp.type='date';inp.id='dateIn';if(v)inp.value=v;
-  inp.addEventListener('change',function(){store(KEY_DATE,inp.value);renderCount();renderTabs(true);});
+  var inp=el('input','in date');inp.type='date';inp.id='dateIn';if(v)inp.value=v;
+  inp.addEventListener('change',function(){store(KEY_DATE,inp.value);renderCount();if(!draft)renderPlan();});
   w.appendChild(lb);w.appendChild(inp);box.appendChild(w);
 }
-renderCount();setInterval(function(){var a=document.activeElement;if(!a||a.id!=='dateIn')renderCount();},30000);
+setInterval(function(){var a=document.activeElement;if(!a||a.id!=='dateIn')renderCount();},30000);
 
-/* ---------- 日期切換 + 時間軸 ---------- */
-var cur=0;
-function dayLabel(i){
-  var t=parseDate(store(KEY_DATE));if(!t)return DAYS[i].sub;
-  t.setDate(t.getDate()+i);
-  return (t.getMonth()+1)+'/'+t.getDate()+'（'+'日一二三四五六'.charAt(t.getDay())+'）';
+/* ---------- 首頁、交通、住宿 ---------- */
+function renderStatic(){
+  document.title=(data.hero.title||'旅遊行程');
+  var n=data.days.length;
+  $('eyebrow').textContent=n===1?'一日小旅行':cn(n)+'日小旅行';
+  $('heroTitle').textContent=data.hero.title;
+  $('heroRoute').textContent=data.hero.route;
+  $('heroRoute').hidden=!data.hero.route;
+
+  var t=data.transport,tk=$('ticket');tk.textContent='';
+  var top=el('div','ticket-top');top.appendChild(el('b',null,t.title));
+  tk.appendChild(top);
+  var legs=el('div','legs');
+  var a=el('div');a.appendChild(el('p','city',t.from.c));a.appendChild(el('p','sub',t.from.s));
+  var ar=el('span');ar.innerHTML='<svg viewBox="0 0 64 40" aria-hidden="true"><path d="M4 21Q28 15 52 20" stroke="#5A4636" stroke-width="1.800" stroke-linecap="round" stroke-dasharray="2 6" fill="none"/><path d="M44 12L58 20L44 28" fill="none" stroke="#A85E44" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  var b=el('div');b.appendChild(el('p','city',t.to.c));b.appendChild(el('p','sub',t.to.s));
+  legs.appendChild(a);legs.appendChild(ar);legs.appendChild(b);tk.appendChild(legs);
+  var bot=el('div','ticket-bot');
+  t.boxes.forEach(function(x){if(!x.k&&!x.v)return;var d=el('div');d.appendChild(el('small',null,x.k));d.appendChild(el('span',null,x.v));bot.appendChild(d);});
+  if(bot.childNodes.length)tk.appendChild(bot);
+  var rl=routeHref();
+  if(rl){var l=el('a','ticket-link','打開整趟路線地圖');l.href=rl;l.target='_blank';l.rel='noopener noreferrer';tk.appendChild(l);}
+
+  var s=data.stay,si=$('stayInfo');si.textContent='';
+  var sp=$('stayPic');sp.textContent='';var ill=$('il-stay');if(ill)sp.appendChild(ill.content.cloneNode(true));
+  si.appendChild(el('h3',null,s.name||'住宿'));
+  if(s.addr)si.appendChild(el('p',null,s.addr));
+  if(s.chips.length){var ch=el('div','chips');s.chips.forEach(function(c){ch.appendChild(el('span','chip',c));});si.appendChild(ch);}
+  if(s.name||s.addr){var m=el('a','maplink');m.href=mapHref((s.name+' '+s.addr).trim());m.target='_blank';m.rel='noopener noreferrer';m.innerHTML=PIN+'<span>開啟地圖</span>';si.appendChild(m);}
 }
-function renderTabs(keepFocus){
-  var tabs=$('tabs');tabs.textContent='';
-  DAYS.forEach(function(d,i){
+function routeHref(){
+  var pts=[];
+  data.days.forEach(function(d){d.stops.forEach(function(s){
+    var q=String(s.q||'').trim();
+    if(q&&!/^https?:\/\//i.test(q)&&pts[pts.length-1]!==q)pts.push(q);
+  });});
+  if(pts.length<2)return '';
+  var e=encodeURIComponent,mid=pts.slice(1,-1).slice(0,9);
+  return 'https://www.google.com/maps/dir/?api=1&origin='+e(pts[0])+'&destination='+e(pts[pts.length-1])+(mid.length?'&waypoints='+mid.map(e).join('%7C'):'')+'&travelmode=driving';
+}
+
+/* ---------- 行程（閱讀模式） ---------- */
+function dayLabel(d,i){
+  var t=parseDate(store(KEY_DATE));if(!t)return d.sub;
+  t.setDate(t.getDate()+i);
+  return (t.getMonth()+1)+'月'+t.getDate()+'日（'+'日一二三四五六'.charAt(t.getDay())+'）';
+}
+function tabsEl(src,onPick){
+  var tabs=el('div','tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','選擇日期');
+  src.days.forEach(function(d,i){
     var b=el('button','tab');b.type='button';b.id='tab-'+i;
-    b.setAttribute('role','tab');b.setAttribute('aria-selected',i===cur?'true':'false');
-    b.setAttribute('aria-controls','panel');b.tabIndex=i===cur?0:-1;
-    b.appendChild(document.createTextNode(d.label));b.appendChild(el('small',null,dayLabel(i)));
-    b.addEventListener('click',function(){select(i,true);});
+    b.setAttribute('role','tab');b.setAttribute('aria-selected',i===cur?'true':'false');b.tabIndex=i===cur?0:-1;
+    b.appendChild(document.createTextNode(d.label));var sub=dayLabel(d,i);if(sub)b.appendChild(el('small',null,sub));
+    b.addEventListener('click',function(){onPick(i);});
     b.addEventListener('keydown',function(e){
-      var n=null;if(e.key==='ArrowRight')n=(cur+1)%DAYS.length;if(e.key==='ArrowLeft')n=(cur+DAYS.length-1)%DAYS.length;
-      if(n!==null){e.preventDefault();select(n,true);$('tab-'+n).focus();}
+      var n=null,L=src.days.length;if(e.key==='ArrowRight')n=(cur+1)%L;if(e.key==='ArrowLeft')n=(cur+L-1)%L;
+      if(n!==null){e.preventDefault();onPick(n);var x=$('tab-'+n);if(x)x.focus();}
     });
     tabs.appendChild(b);
   });
+  return tabs;
 }
-function bounce(node,cls){if(reduce)return;node.classList.remove(cls);void node.offsetWidth;node.classList.add(cls);}
-function select(i,animate){
-  cur=i;renderTabs();renderStops();
-  if(animate){bounce($('tab-'+i),'tabpop');bounce($('tl'),'pop');}
-}
-function renderStops(){
-  var d=DAYS[cur];$('dayNote').textContent=d.note;$('panel').setAttribute('aria-labelledby','tab-'+cur);
-  var ol=$('tl');ol.textContent='';
-  d.stops.forEach(function(s){
+function renderPlan(animate){
+  if(draft){renderEditor();return;}
+  var card=$('planCard');card.textContent='';
+  if(cur>=data.days.length)cur=0;
+  var day=data.days[cur];
+  card.appendChild(tabsEl(data,function(i){cur=i;renderPlan(true);}));
+  if(day.note)card.appendChild(el('p','day-note',day.note));
+  var ol=el('ol','tl');
+  if(!day.stops.length)card.appendChild(el('p','empty','這一天還沒有安排行程，按「編輯行程」新增。'));
+  day.stops.forEach(function(s){
     var li=el('li','stop'+(s.must?' must':''));
     li.appendChild(el('span','pin'));
     var c=el('div','stop-card');
-    c.appendChild(el('span','time',s.t));
-    c.appendChild(el('h3',null,s.n));
+    if(s.t)c.appendChild(el('span','time',s.t));
+    c.appendChild(el('h3',null,s.n||'未命名行程'));
     if(s.a)c.appendChild(el('p','addr',s.a));
     if(s.note)c.appendChild(el('p','note',s.note));
     var tg=el('div','tags');
     if(s.must)tg.appendChild(el('span','tag must','★ 必去'));
     s.tags.forEach(function(k){tg.appendChild(el('span','tag '+k,TAGNAME[k]));});
     if(tg.childNodes.length)c.appendChild(tg);
-    if(s.q){
-      var a=el('a','maplink');a.href=mapHref(s.q);a.target='_blank';a.rel='noopener noreferrer';
-      a.setAttribute('aria-label',s.n+'，在 Google 地圖開啟');a.innerHTML=pin+'<span>Google 地圖</span>';
-      c.appendChild(a);
-    }
+    var key=pickIllus(s),fig=key?illusNode(key):null;if(fig)c.appendChild(fig);
+    if(s.q){var a=el('a','maplink');a.href=mapHref(s.q);a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label',(s.n||'行程')+'，開啟地圖');a.innerHTML=PIN+'<span>開啟地圖</span>';c.appendChild(a);}
     li.appendChild(c);ol.appendChild(li);
   });
+  if(day.stops.length){
+    var panel=el('div');panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','tab-'+cur);panel.appendChild(ol);card.appendChild(panel);
+    var lg=el('p','legend');lg.setAttribute('aria-label','標籤說明');
+    lg.innerHTML='<span class="tag drive">自駕</span><span class="tag walk">步行</span><span class="tag must">★ 必去</span>';
+    card.appendChild(lg);
+  }
+  if(animate){bounce($('tab-'+cur),'tabpop');bounce(ol,'pop');}
+  renderBanner();renderShare();
 }
-renderTabs();renderStops();
+function renderBanner(){
+  var b=$('banner');b.textContent='';
+  if(!fromShare||draft)return;
+  var w=el('div','banner');w.appendChild(el('p',null,'你正在看分享連結裡的行程。想留在這個瀏覽器，請按右邊的按鈕。'));
+  var k=el('button','btn sm','存到這個瀏覽器');k.type='button';
+  k.addEventListener('click',function(){persist(data);fromShare=false;renderBanner();renderShare();});
+  w.appendChild(k);b.appendChild(w);
+}
+
+/* ---------- 分享 ---------- */
+function shareUrl(){return location.href.split('#')[0]+'#d='+enc(data);}
+function renderShare(){
+  var box=$('shareBox');box.hidden=!!draft;if(draft)return;
+  box.textContent='';
+  box.appendChild(el('p',null,'改好行程後，複製分享連結傳給朋友，他們打開就會看到你改過的版本。'));
+  var row=el('div','row');
+  var c=el('button','btn','複製分享連結');c.type='button';
+  var r=el('button','btn','還原預設行程');r.type='button';
+  row.appendChild(c);row.appendChild(r);box.appendChild(row);
+  var msg=el('p','msg');msg.setAttribute('aria-live','polite');box.appendChild(msg);
+  c.addEventListener('click',function(){
+    var u=shareUrl();
+    var old=box.querySelector('input.in');if(old)old.remove();
+    function fallback(){var i=el('input','in');i.type='text';i.readOnly=true;i.value=u;i.setAttribute('aria-label','分享連結');box.appendChild(i);i.focus();i.select();msg.textContent='請長按連結選取並複製。';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){msg.textContent='已複製分享連結（共 '+u.length+' 字）。';}).catch(fallback);}
+    else fallback();
+  });
+  r.addEventListener('click',function(){
+    if(armed!=='reset'){armed='reset';r.textContent='確定還原？';r.classList.add('warn');msg.textContent='會清除你改過的行程，再按一次確認。';return;}
+    armed=null;store(KEY_DATA,null);fromShare=false;data=clean(clone(DEFAULT));cur=0;
+    if(location.hash)try{history.replaceState(null,'',location.href.split('#')[0]);}catch(e){}
+    renderAll();
+  });
+}
+function persist(d){
+  store(KEY_DATA,JSON.stringify(d));
+  if(location.hash)try{history.replaceState(null,'',location.href.split('#')[0]);}catch(e){}
+}
+
+/* ---------- 編輯模式 ---------- */
+function fld(label,id,val,max,ph){
+  var w=el('div','fld');var lb=el('label',null,label);lb.setAttribute('for',id);
+  var i=el('input','in');i.type='text';i.id=id;i.value=val;i.maxLength=max;if(ph)i.placeholder=ph;i.autocomplete='off';
+  w.appendChild(lb);w.appendChild(i);return w;
+}
+function sel(label,id,val,opts){
+  var w=el('div','fld');var lb=el('label',null,label);lb.setAttribute('for',id);
+  var s=el('select','in');s.id=id;
+  opts.forEach(function(o){var op=el('option',null,o[1]);op.value=o[0];if(o[0]===val)op.selected=true;s.appendChild(op);});
+  w.appendChild(lb);w.appendChild(s);return w;
+}
+function pair(a,b){var p=el('div','pair');p.appendChild(a);p.appendChild(b);return p;}
+function btn(txt,act,idx,cls,id){var b=el('button','btn sm'+(cls?' '+cls:''),txt);b.type='button';b.setAttribute('data-act',act);if(idx!=null)b.setAttribute('data-i',idx);if(id)b.id=id;return b;}
+function ck(label,cls,field,idx,checked){
+  var w=el('label','ck');var i=el('input');i.type='checkbox';i.checked=checked;i.setAttribute('data-f',field);i.setAttribute('data-i',idx);
+  var s=el('span',cls,label);w.appendChild(i);w.appendChild(s);return w;
+}
+function renderEditor(){
+  var card=$('planCard');card.textContent='';
+  if(cur>=draft.days.length)cur=draft.days.length-1;
+  var day=draft.days[cur];
+  card.appendChild(tabsEl(draft,function(i){cur=i;armed=null;renderEditor();}));
+  var dc=el('div','dayctl');
+  dc.appendChild(btn('＋ 新增一天','addday'));
+  var dd=btn(armed==='delday'?'確定刪除這天？':'刪除這天','delday',null,armed==='delday'?'warn':'');if(draft.days.length<2)dd.disabled=true;dc.appendChild(dd);
+  card.appendChild(dc);
+  card.appendChild(pair(fld('這天的名稱','e-dlabel',day.label,10,'例如 第一天'),fld('沒設日期時顯示的副標','e-dsub',day.sub,12,'例如 豐原出發')));
+  card.appendChild(fld('這天的說明','e-dnote',day.note,120,'選填'));
+
+  if(!day.stops.length)card.appendChild(el('p','empty','還沒有行程，按下面的按鈕新增第一站。'));
+  day.stops.forEach(function(s,i){
+    var e=el('div','ecard'+(s.must?' must':''));
+    e.appendChild(el('h4',null,'第 '+(i+1)+' 站'));
+    e.appendChild(pair(fld('時間','e-t-'+i,s.t,24,'例如 10:00～11:00'),fld('名稱','e-n-'+i,s.n,60,'例如 妮珂森咖啡')));
+    e.appendChild(fld('地址或說明','e-a-'+i,s.a,80,'選填'));
+    e.appendChild(fld('地圖：地點名稱、地址，或貼上地圖網址','e-q-'+i,s.q,400,'留空就不顯示地圖按鈕'));
+    e.appendChild(fld('備註','e-note-'+i,s.note,100,'選填'));
+    e.appendChild(sel('插圖','e-img-'+i,s.img||'auto',ILLUS));
+    var cs=el('div','checks');
+    cs.appendChild(ck('自駕','c-drive','drive',i,s.tags.indexOf('drive')>=0));
+    cs.appendChild(ck('步行','c-walk','walk',i,s.tags.indexOf('walk')>=0));
+    cs.appendChild(ck('★ 必去','c-must','must',i,!!s.must));
+    e.appendChild(cs);
+    var tl=el('div','tools');
+    var up=btn('↑ 上移','up',i,'','b-up-'+i);if(i===0)up.disabled=true;
+    var dn=btn('↓ 下移','down',i,'','b-down-'+i);if(i===day.stops.length-1)dn.disabled=true;
+    tl.appendChild(up);tl.appendChild(dn);tl.appendChild(btn('＋ 在下方新增','add',i));
+    tl.appendChild(btn(armed==='stop'+i?'確定刪除？':'刪除','del',i,armed==='stop'+i?'warn':'','b-del-'+i));
+    e.appendChild(tl);card.appendChild(e);
+  });
+  var addEnd=btn('＋ 新增一站','addend');addEnd.style.marginBottom='18px';card.appendChild(addEnd);
+
+  var h=el('div','ecard');h.appendChild(el('h4',null,'首頁標題'));
+  h.appendChild(fld('標題','e-htitle',draft.hero.title,24));h.appendChild(fld('副標（路線）','e-hroute',draft.hero.route,40));
+  card.appendChild(h);
+
+  var t=draft.transport,tc=el('div','ecard');tc.appendChild(el('h4',null,'交通資訊'));
+  tc.appendChild(fld('交通方式','e-ttitle',t.title,16));
+  tc.appendChild(pair(fld('出發地','e-fc',t.from.c,10),fld('出發說明','e-fs',t.from.s,24)));
+  tc.appendChild(pair(fld('目的地','e-tc',t.to.c,10),fld('抵達說明','e-ts',t.to.s,24)));
+  t.boxes.forEach(function(b,i){tc.appendChild(pair(fld('小卡 '+(i+1)+' 標題','e-bk-'+i,b.k,10),fld('小卡 '+(i+1)+' 內容','e-bv-'+i,b.v,14)));});
+  card.appendChild(tc);
+
+  var s=draft.stay,sc=el('div','ecard');sc.appendChild(el('h4',null,'住宿資訊'));
+  sc.appendChild(fld('名稱','e-sname',s.name,30));sc.appendChild(fld('地址','e-saddr',s.addr,60));
+  sc.appendChild(fld('小標籤（用逗號分隔）','e-schips',s.chips.join('，'),80,'例如 16:00 入住，含早餐'));
+  card.appendChild(sc);
+
+  if(focusId){var f=$(focusId);if(f)f.focus();focusId=null;}
+}
+function setEmsg(t){$('emsg').textContent=t||'編輯中';}
+function dirty(){return JSON.stringify(clean(draft))!==JSON.stringify(data);}
+function enterEdit(){
+  draft=clone(data);armed=null;document.body.classList.add('editing');$('ebar').hidden=false;$('editBtn').hidden=true;
+  $('banner').textContent='';setEmsg('');renderPlan();$('shareBox').hidden=true;
+  $('plan').scrollIntoView({behavior:reduce?'auto':'smooth'});
+}
+function exitEdit(){
+  draft=null;armed=null;document.body.classList.remove('editing');$('ebar').hidden=true;$('editBtn').hidden=false;
+  renderAll();
+}
+$('editBtn').addEventListener('click',enterEdit);
+$('saveBtn').addEventListener('click',function(){
+  var c=clean(draft);if(!c){setEmsg('資料有問題，無法儲存。');return;}
+  data=c;persist(data);fromShare=false;exitEdit();
+});
+$('cancelBtn').addEventListener('click',function(){
+  if(dirty()&&armed!=='cancel'){armed='cancel';setEmsg('還有沒儲存的修改，再按一次「取消」就會放棄。');return;}
+  exitEdit();
+});
+var pc=$('planCard');
+pc.addEventListener('input',function(e){
+  if(!draft)return;var t=e.target,id=t.id||'';if(t.type==='checkbox'||t.tagName==='SELECT')return;
+  var v=t.value,m;armed=null;
+  if(id==='e-dlabel')draft.days[cur].label=v;
+  else if(id==='e-dsub')draft.days[cur].sub=v;
+  else if(id==='e-dnote')draft.days[cur].note=v;
+  else if((m=/^e-(t|n|a|q|note)-(\d+)$/.exec(id))){var s=draft.days[cur].stops[+m[2]];if(s)s[m[1]]=v;}
+  else if(id==='e-htitle')draft.hero.title=v;
+  else if(id==='e-hroute')draft.hero.route=v;
+  else if(id==='e-ttitle')draft.transport.title=v;
+  else if(id==='e-fc')draft.transport.from.c=v;
+  else if(id==='e-fs')draft.transport.from.s=v;
+  else if(id==='e-tc')draft.transport.to.c=v;
+  else if(id==='e-ts')draft.transport.to.s=v;
+  else if((m=/^e-(bk|bv)-(\d)$/.exec(id))){draft.transport.boxes[+m[2]][m[1]==='bk'?'k':'v']=v;}
+  else if(id==='e-sname')draft.stay.name=v;
+  else if(id==='e-saddr')draft.stay.addr=v;
+  else if(id==='e-schips')draft.stay.chips=v.split(/[,，、]/).map(function(x){return x.trim();}).filter(Boolean);
+});
+pc.addEventListener('change',function(e){
+  if(!draft)return;var t=e.target,m;
+  if(t.tagName==='SELECT'&&(m=/^e-img-(\d+)$/.exec(t.id||''))){var st=draft.days[cur].stops[+m[1]];if(st)st.img=t.value;return;}
+  if(t.type!=='checkbox')return;
+  var f=t.getAttribute('data-f'),i=+t.getAttribute('data-i'),s=draft.days[cur].stops[i];if(!s)return;
+  if(f==='must'){s.must=t.checked;var ec=t.closest('.ecard');if(ec)ec.classList.toggle('must',t.checked);}
+  else{var k=s.tags.indexOf(f);if(t.checked&&k<0)s.tags.push(f);if(!t.checked&&k>=0)s.tags.splice(k,1);}
+});
+pc.addEventListener('click',function(e){
+  if(!draft)return;var b=e.target.closest('[data-act]');if(!b||b.disabled)return;
+  var act=b.getAttribute('data-act'),i=b.getAttribute('data-i');i=i==null?null:+i;
+  var day=draft.days[cur],blank={t:'',n:'',a:'',q:'',note:'',tags:['drive'],must:false,img:'auto'};
+  var key=act==='del'?'stop'+i:act;
+  if(armed&&armed!==key)armed=null;
+  switch(act){
+    case 'up':case 'down':
+      var j=i+(act==='up'?-1:1);if(j<0||j>=day.stops.length)return;
+      var tmp=day.stops[i];day.stops[i]=day.stops[j];day.stops[j]=tmp;focusId='b-'+act+'-'+j;break;
+    case 'add':day.stops.splice(i+1,0,blank);focusId='e-n-'+(i+1);break;
+    case 'addend':day.stops.push(blank);focusId='e-n-'+(day.stops.length-1);break;
+    case 'del':
+      if(armed==='stop'+i){day.stops.splice(i,1);armed=null;}else{armed='stop'+i;focusId='b-del-'+i;}break;
+    case 'addday':
+      if(draft.days.length>=14)return;
+      draft.days.push({label:'第'+cn(draft.days.length+1)+'天',sub:'',note:'',stops:[]});cur=draft.days.length-1;focusId='e-dlabel';break;
+    case 'delday':
+      if(draft.days.length<2)return;
+      if(armed==='delday'){draft.days.splice(cur,1);cur=Math.max(0,cur-1);armed=null;}else armed='delday';break;
+  }
+  renderEditor();
+});
 
 /* ---------- 待辦清單 ---------- */
-var KEY_TODO='trip-todo-v1';
 var todos=(function(){
-  try{var r=JSON.parse(store(KEY_TODO));if(Array.isArray(r))return r.filter(function(x){return x&&typeof x.t==='string';});}catch(e){}
+  try{var r=JSON.parse(store(KEY_TODO));if(Array.isArray(r))return r.filter(function(x){return x&&typeof x.t==='string';}).map(function(x){x.t=zh(x.t);return x;});}catch(e){}
   return DEFAULT_TODO.map(function(t,i){return {id:'d'+i,t:t,done:false};});
 })();
 function saveTodos(){store(KEY_TODO,JSON.stringify(todos));}
 function renderTodos(){
   var ul=$('todoList');ul.textContent='';
   todos.forEach(function(x){
-    var li=el('li');
-    var lb=el('label');
+    var li=el('li'),lb=el('label');
     var inp=el('input');inp.type='checkbox';inp.checked=!!x.done;
     inp.addEventListener('change',function(){x.done=inp.checked;saveTodos();progress();});
-    var bx=el('span','box');bx.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7"/></svg>';
+    var bx=el('span','cbox');bx.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13c3 2 4 4 5 6c3-7 7-11 12-14"/></svg>';
     lb.appendChild(inp);lb.appendChild(bx);lb.appendChild(el('span','tx',x.t));
     var del=el('button','del','×');del.type='button';del.setAttribute('aria-label','刪除：'+x.t);
     del.addEventListener('click',function(){todos=todos.filter(function(y){return y!==x;});saveTodos();renderTodos();});
@@ -523,7 +860,10 @@ $('addForm').addEventListener('submit',function(e){
   e.preventDefault();var v=$('addIn').value.trim();if(!v)return;
   todos.push({id:'n'+Date.now(),t:v.slice(0,40),done:false});$('addIn').value='';saveTodos();renderTodos();
 });
-renderTodos();
+
+/* ---------- 啟動 ---------- */
+function renderAll(){renderStatic();renderCount();renderPlan();renderBanner();renderShare();}
+renderAll();renderTodos();
 })();
 </script>
 </body>
